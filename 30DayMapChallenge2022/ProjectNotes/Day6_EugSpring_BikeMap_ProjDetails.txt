@@ -1,0 +1,157 @@
+###########################################################
+###########################################################
+
+Eugene Bike Paths in Metro Style
+Author: Devin Lea
+
+Date project started: 10/28/2022
+Last updated: 11/4/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- Microsoft Paint
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my network map for #30DayMapChallenge
+
+I also really liked the idea of visualizing the paths this way because
+I find this kind of map visually appealing
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) OSM Extracts for Eugene (shapefile)
+2) Bike image (pixabay)
+3) US Census Bureau 5m States Cartographic Boundary Shapefile
+4) Eugene Location (.csv I created)
+
+
+1) OSM Extracts for Eugene (shapefile)
+
+Downloaded Open Street Map extracts from BBBike at link:
+https://download.bbbike.org/osm/bbbike/Eugene/
+
+Extracted data and loaded into QGIS
+
+
+2) Bike image (pixabay)
+
+Got a simple bicycle image download from pixabay at link:
+https://pixabay.com/vectors/bike-bicycle-pictogram-symbol-160920/
+
+Used this to create north arrow in Adobe Illustrator
+
+
+3) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+4) Eugene location (.csv)
+
+I created a .csv file in Microsoft Excel with three columns: (1) name, (2) lat, (3) lon.
+Name = Eugene. I obtained lat and lon coordinates for Eugene using Google geocoding API:
+https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder
+
+The .csv was loaded in with state cartographic boundary file in QGIS to map Eugene location in Oregon
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Initially loaded Eugene shapefile data from OSM into QGIS and selected by attribute to
+find all lines part of the roads layer where road type = cycleway.
+I made these into a new layer. I then determined what were the main bike paths
+in Eugene-Springfield area based on knowledge and names in the name column.
+
+I then exported the Eugene-Springfield cycleways layer as a PDF using following
+parameters:
+
+1:90000
+Resolution: 250dpi
+N: 44.174611587
+E: -122.864002117
+S: 43.948718789
+W: -123.216697193
+
+
+Once in Adobe Illustrator, I used paths as general guides of where to place my paths,
+although I moved and scaled some things different to give myself adequate space and
+for aesthetics. For example, I created more space between Willamette and McKenzie rivers
+to have more space for Springfield bike paths. I also took cartographic liberty to make
+connections between some of the bike paths that come close to each other but don't have
+direct connections to create appearance of connected system.
+
+For coloring of bike paths, I wanted a selection of several colors but that would also
+minimize any color blindness issues, so I decided to use the true color palette here:
+https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
+
+After placing map elements and key, I decided I also wanted a north arrow. I searched
+images on Pixabay and found a bicycle clip art that I could alter the frame color to
+look like an N for a north arrow. Image here:
+https://pixabay.com/vectors/bike-bicycle-pictogram-symbol-160920/
+I made other parts of the bike gray while keeping part of the frame black using
+Microsoft Paint software. Then I opened and copied the image into Adobe Illustrator.
+
+
+When map was mostly set I decided I also wanted an oregon outline and star to show location
+of Eugene-Springfield. To do this I acquired the US Census Bureau states carto boundary files
+and I created the Eugene lat/long location .csv. I loaded these into a new session of QGIS.
+
+I first selected Oregon from the states shapefile and saved it as its own new shapefile.
+
+I then changed the projection to Oregon Lambert Projection (EPSG 2992)
+
+I then made Oregon white fill with black 0.5 stroke. For the Eugene location, I changed the
+symbol to a black star.
+
+I then exported the Oregon and Eugene location map as a PDF with following parameters.
+
+1:6533057
+Resolution: 250dpi
+N: 2454675.5155
+E: 3856073.6304
+S: -596352.9769
+W: -907613.9784
+
+I then loaded the PDF into Adobe Illustrator and copied all PDF elements into a new AI layer
+and appropriately sized and placed the Oregon outline with the whole map.
+
+
+

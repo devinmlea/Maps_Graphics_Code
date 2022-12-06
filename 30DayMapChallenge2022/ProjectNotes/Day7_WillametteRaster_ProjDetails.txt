@@ -1,0 +1,208 @@
+###########################################################
+###########################################################
+
+Willamette National Forest RayShader Raster
+Author: Devin Lea
+
+Date project started: 11/4/2022
+Last updated: 11/7/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- R
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my raster map for #30DayMapChallenge
+
+I also wanted to use this as an opportunity to learn a bit of using
+rayshader and related packages in R
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+The main source I used to help guide me in working through my rayshader exploration was:
+
+1) Spencer Schien's "Creating High-Quality 3D Visuals with Rayshader" blog post:
+https://spencerschien.info/post/data_viz_how_to/high_quality_rayshader_visuals/
+
+Thanks to Spencer for creating a nice resource to help introduce to this R package
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+1) National Forest Polygons (shapefile)
+2) US Census Bureau 5m States Cartographic Boundary Shapefile
+3) raster data from elevatr R package
+
+
+1) National Forest polygons
+
+From the USDA Forest Service website I downloaded national dataset of National Forest polygons,
+with the file named "Administrative Forest Boundaries" from:
+https://data.fs.usda.gov/geodata/edw/datasets.php?dsetCategory=boundaries
+
+I downloaded this shapefile then imported it into QGIS
+
+
+2) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+3) Raster data from elevatr R package
+This data was called and used as part of get_elev_raster() and the elevatr R package.
+See the R code below and Spencer Schien's blog post for more information on this data.
+
+###########################################################
+Data Visualization
+###########################################################
+
+I initially loaded the USDA National Forest Layer into QGIS. In QGIS I selected the Willamette
+Forest Polygon and saved it as a new shapefile layer.
+
+I then started working in R following Spencer Schien's
+"Creating High-Quality 3D Visuals with Rayshader" blog post:
+https://spencerschien.info/post/data_viz_how_to/high_quality_rayshader_visuals/
+
+I suggest you also follow Spencer's guide, which explains more than I do below
+why each step was taken.
+
+I ended up playing around with a lot of variables to see what looks good, which I encourage
+you to also do whether you are trying to replicate my map or create your own. But below is
+the R code that generated the raster I used for my map. I needed to add a lot of new packages
+to get some things to run, so ignore those if you already have installed and loaded.
+
+
+############################################################
+Start of Rstats code:
+
+install.packages("elevatr")
+install.packages("rgdal")
+install.packages("progress")
+install.packages("rayshader")
+install.packages("MetBrewer")
+install.packages("magick")
+install.packages("rayrender")
+
+library(sf)
+library(elevatr)
+library(rgdal)
+library(progress)
+library(rayshader)
+library(MetBrewer)
+library(magick)
+library(rayrender)
+
+
+# read in boundary polygon
+willforpoly <- st_read("FilePath/WillametteNF.shp")
+
+# Query for elevation data, masked by our 'location' specified as the willforpoly
+wf_elev <- get_elev_raster(willforpoly, z = 10, clip = "location")
+
+# Convert raster to matrix 
+wf_mat <- raster_to_matrix(wf_elev)
+
+# choose Cassatt2 palette from MetBrewer
+pal <- "VanGogh3"
+palcolors <- met.brewer(pal)
+
+# Dynaimcally set window height and width based on object size
+w <- nrow(wr_mat)
+h <- ncol(wr_mat)
+
+# Scale the dimensions so we can use them as multipliers
+wr <- w / max(c(w,h))
+hr <- h / max(c(w,h))
+
+# Limit ratio so that the shorter side is at least .75 of longer side
+if (min(c(wr, hr)) < .75) {
+  if (wr < .75) {
+    wr <- .75
+  } else {
+    hr <- .75
+  }
+}
+
+wr_mat %>%
+  height_shade(texture = grDevices::colorRampPalette(palcolors)(256)) %>%
+  plot_3d(heightmap = wr_mat, 
+          windowsize = c(800*wr,800*hr), 
+          solid = FALSE, 
+          zscale = 10,
+          phi = 90, 
+          zoom = .6, 
+          theta = 0)
+
+render_snapshot()
+
+rgl::rgl.close()
+
+end Rstats code
+############################################################
+
+After using render_snapshot(), I exported the figure as a PDF.
+
+I then opened the PDF in Adobe Illustrator and copied the data to a new .ai file
+and sized it appropriately to the artboard using scale.
+
+I added my text, north arrow, and legend. Font type was Script MT Bold. The fill and stroke
+color for the text, north arrow, and legend were sampled from the raster image using the eyedropper
+tool. The fill color was from low elevation while stroke from high elevation. The hex codes were:
+C8D8AB (low elevation)
+29662D (high elevation)
+
+To create the north arrow I used the N text and created a line using the line segment tool, which
+I then edited under stroke properties to add the arrow point and arrow fletching. I added the
+squares for the low and high elevations using the rectangle tool.
+
+Finally, I wanted to show where Willamette National Forest is within Oregon, so in a new QGIS
+project I loaded the Census Bureau 5m shapefile and selected Oregon polygon and saved it as a
+new shapefile layer. I then removed the US states polygon and changed the projection of the Oregon
+polygon to Oregon Lambert Projection (EPSG 2992). I then added the Willamette Forest Polygon and
+edited the layers to have colors matching the raster image. Specifically, I used stroke color
+29662D for Oregon outline (and white fill). I used 29662D color also for Willamette NF outline,
+while I used C8D8AB color for fill.
+
+I then exported Oregon outline and Willamette National Forest fill as a PDF using following parameters
+dpi:250
+1:5000000
+N: 2049572.2780
+E: 3133066.4902
+S: -285497.1664
+W: -512766.8432
+
+This PDF I then loaded into Adobe Illustrator, and I copied the data over to my .ai file with the raster
+data and appropriately sized and placed it on the map

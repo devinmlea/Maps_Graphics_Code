@@ -1,0 +1,165 @@
+###########################################################
+###########################################################
+
+Top Avocado Producers + Exporters Map
+2020/2021 Data
+Author: Devin Lea
+
+Date project started: 10/25/2022
+Last updated: 10/28/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my green map for #30DayMapChallenge
+
+I also just thought this would be a fun topic and map to create
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were five data sources I acquired:
+1) Avocado 2020 production data (created .csv file, data from wiki/FAO)
+2) Avocado 2021 top exporting countries with amounts/importers (data from Tridge)
+3) Natural Earth 1:110m countries shapefile (shapefile)
+4) Natural Earth 50m lakes shapefile (shapefile)
+5) Avocado Image (Pixabay)
+
+
+1) Avocado 2020 production data (created .csv file, data from wiki/FAO)
+
+Acquired list of avocado production amounts from list at:
+https://en.wikipedia.org/wiki/List_of_countries_by_avocado_production
+
+I copied and saved the data to a new .csv file
+
+
+2) Avocado 2021 top exporting countries with amounts/importers (data from Tridge)
+
+Acquired export data in $$ from link:
+https://www.tridge.com/intelligences/avocado/export
+
+However, what I wanted was an estimate of export amounts equivalent to production
+(metric tons) and needed a way to convert. To do this, I found both the value
+and amount that United States imported from Mexico in link below:
+https://www.aphis.usda.gov/aphis/newsroom/stakeholder-info/sa_by_date/sa-2022/avocado-imports-mexico#:~:text=In%202021%2C%20the%20United%20States,coming%20from%20Mexico%20(89%25).
+"In 2021, the United States imported $3.0 billion avocados globally, with $2.8 billion
+coming from Mexico (92%).  In terms of volume, the United States imported 1.2
+million metric tons of avocados, with 1.1 million coming from Mexico (89%)"
+
+Using these amounts, I created a conversion ratio between metric tons and dollars:
+0.00039286 metric ton / $
+
+I then applied this ratio to convert export values to metric tons, assuming equal
+conversion factor for all places and no diff between 2020 and 2021
+
+Exports (country to country, dollars)
+Mexico -> Spain - 83.33M  ->  32.73k metric tons (1.5pt)
+Mexico - > USA - 2,381.18M  ->  1.1m metric tons (50pt)
+Mexico -> Canada - 228.2M  ->  89.65k metric tons (4pt)
+Mexico -> Japan - 120.78M  ->  47.45k metric tons (2.2pt)
+Peru -> Spain - 210.65M  ->  82.75k metric tons (3.75pt)
+Peru -> Germany - 96.75M  ->  38k metric tons (1.75pt)
+Peru -> USA - 201.28M  ->  79k metric tons (3.6pt)
+Peru -> Netherlands - 371.36M  ->  145.9k metric tons (6.6pt)
+Peru -> Chile - 117.2M  ->  46k metric tons (2.1pt)
+Peru -> UK - 86.59M  ->  34k metric tons (1.6pt)
+Peru -> China - 66.72M  ->  26.2k metric tons (1pt)
+New Zealand -> Australia - 161.94M  ->  63.6k metric tons (2.85pt)
+Colombia -> Netherlands - 108.43M  ->  42.6k metric tons (2pt)
+South Africa -> Netherlands - 79.06M  ->  31k metric tons (1.5pt)
+Spain -> France - 207.45M  ->  81.5k metric tons (3.7pt)
+USA -> Canada - 128.78M  ->  50.6k metric tons (2.3pt)
+Chile -> Netherlands - 127.7M  ->  50.1k metric tons (2.3pt)
+Netherlands -> Germany - 322.91M  ->  126.8k metric tons (5.75pt)
+Netherlands -> France - 181.59M  ->  71.3k metric tons (3.25pt)
+Netherlands -> Norway - 67.17M  ->  26.3k metric tons (1.2pt)
+
+
+3) Natural Earth 1:110m countries shapefile (shapefile)
+
+Downloaded 1:110m scale cultural vectors at link:
+https://www.naturalearthdata.com/downloads/110m-cultural-vectors/
+
+
+4) Natural Earth 50m lakes shapefile
+
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+
+5) Avocado Image (Pixabay)
+
+Acquired avocado image to use as part of map from link:
+https://pixabay.com/illustrations/avocado-fruit-salad-healthy-3707023/
+Color samples:
+Dark green - H:93, S:240, L:72, R:0, G:153, B:51
+Green - H:51, S:185, L:137, R:182, G:230, B:62
+Light Green/Yellow - H:43, S:240, L:191, R:246, G:255, B:150
+Brown - H:21, S:114, L:88, R:137, G:96, B:49
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the production data .csv, countries,
+and lakes.
+
+Once I joined the production data to the countries shapefile, then I created
+four categories for the values:
+>1M (Dark green)
+1M - 100K (Green)
+<100K (Light Green/Yellow)
+0 (Brown)
+Stroke for between countries was black (R:0, G:0, B:0)
+
+Then exported from QGIS to PDF.
+
+Loaded PDF into Adobe Illustrator and sized to artboard.
+
+Created arrows for exports to import countries. Set arrow size based on
+estimated export amount. For every 22k metric tons = 1 unit stroke.
+Stroke size I used is in parentheses above with estimation of metric tons.
+Arrows 80% opacity, R:0, G:80, B:0
+
+
