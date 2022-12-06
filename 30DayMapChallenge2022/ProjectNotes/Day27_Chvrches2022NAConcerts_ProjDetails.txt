@@ -1,0 +1,153 @@
+###########################################################
+###########################################################
+
+Chvrches 2022 North American Screen Violence Tour
+Author: Devin Lea
+
+Date project started: 11/27/2022
+Last updated: 12/6/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Paint
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator + Photoshop
+
+
+###########################################################
+Project Goal
+###########################################################
+
+The most immediate goal was to have this for my day 27 (music) of
+30 Day Map Challenge 2022.
+
+I already had compiled Chvrches concerts up to summer 2022, so I
+just added to that list for remainder of this year up until
+their last leg ended in October
+
+For design purposes, I wanted emulate a style from one of their
+tour posters. I ended up using one from earlier in the year with
+the three primary colors red, teal, blue being those for the
+three legs of the tour throughout the year.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+1) Chvrches concert data (created .csv file)
+2) Natural Earth 50m land shapefile (shapefile)
+3) Natural Earth 50m lakes shapefile (shapefile)
+
+This past summer I had already gone to link here:
+https://www.concertarchives.org/bands/chvrches
+and went through all Chvrches recorded concerts up until early July 2022.
+I went back through the website and added all concerts in North America
+after I had left off until present, also consulting the Chvrches Twitter
+page over the past year for reference of all posted concerts. Again, this
+was all recorded in Microsoft Excel and I had in five columns. From
+left to right, those columns (+ description) were:
+A) Band (band name; this was always "Chvrches")
+B) Date (the date of the concert)
+C) Venue (venue name)
+D) OrigLocation (The original city name, state/province name, country name from the website)
+E) UpLocation (updated city name, state/province name, country name)
+
+Once I had updated the Excel sheet I selected out all the 2022 data
+and saved to a new spredsheet that would be used to make my map
+
+To this data I added another column that was a value of venue maximum capacity
+I searched on Google each venue name and its maximum capacity and saved this
+name in the appropriate row
+
+2) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove Carribean islands so I would be able to have clear space for labels
+for Miami and Ft. Lauderdale and other text I eventually would place in this area.
+
+
+3) Natural Earth 50m lakes shapefile
+
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the land polygons, lakes polygons, and 2022 concert
+locations csv as points.
+
+I ended up doing essentially all my work in Adobe Illustrator, as I first just exported
+the points, lakes, and land polygon at 1:28,000,000 scale to a PDF, and opened the PDF
+and copied the data to a new .ai file.
+
+I first set colors of the layers after also adding a rectangle as a background
+behind the data
+Rectangle: Fill color = R:20,G:20,B:20
+Land: Fill color =  R:0,G:0,B:0; Stroke = R:255,G:255,B:255, width = 0.2
+Lakes: Fill color = R:20,G:20,B:20
+Leg 1 points color = R:0,G:165,B:130 (teal)
+Leg 2 points color = R:190,G:40,B:46 (red)
+Leg 3 points color = R:8,G:182,B:224 (blue)
+
+The colors for the legs of the tour were sampled using eyedropper in Microsoft
+Paint from a fall 2022 concerts announcement poster of the tour
+
+I then set size of each location based on maximum venue capacity as follows:
+Max Capacity - circle size (pixels)
+> 100,000 - 30,30
+10,000-100k - 20,20
+1,000-10,000 - 10,10
+< 1,000 - 6,6
+
+Circles were set to opacity 80%
+
+I then added the flow arrows using the curvature tool and adding arrow heads
+under the stroke options, and setting the arrows same color as corresponsing
+points
+
+I then added the text and callouts (if necessary) for concert locations
+
+Finally, I added the remaining key, title, and info text. I generally kept
+these white, although for title I tried to emulate the Chvrches logo on the
+tour posters. To do this I added black lines horizontal accros the title,
+but I gave them low opacity (between 20-50%) and also gave them inner glow,
+which overall produced the static TV kind of look

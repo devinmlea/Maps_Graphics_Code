@@ -1,0 +1,103 @@
+###########################################################
+###########################################################
+
+Colorado Springs NULL Map
+Author: Devin Lea
+
+Date project started: 11/22/2022
+Last updated: 11/22/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my NULL map for #30DayMapChallenge
+
+I wanted to make a map that was a tribute to the victims of the
+recent shooting at a Colorado Springs queer bar
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) Colorado Places (shapefile)
+2) Progress Pride Flag Image
+
+
+1) Colorado Places (shapefile)
+Obtained from US Census Bureau at website:
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+Year 2021, Layer Type -> Places, State Name -> Colorado
+Unzipped file and loaded into QGIS
+
+2) Progress Pride Flag Image
+Took a screenshot of the Progress Pride Flag at this link:
+https://www.them.us/story/progress-pride-flag-intersex-inclusive-makeover
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Opened QGIS and loaded Colorado Places shapefile
+
+Selected Colorado Springs polygon and saved to new shapefile,
+removed Colorado Places layer
+
+Exported to PDF the Colorado Springs Map
+
+Opened Adobe Illustrator and copied Colorado Springs PDF data
+to new .ai file.
+
+Changed transparency of Colorado Springs fill data to 0%
+
+Opened Progress Pridge Flag Image in AI and copied to .ai file
+
+Copied outline of Colorado Springs boundaries and put location
+same as 1st outline of Colorado Springs, then selected both
+one of the boundaries and the pride flag image and created
+a clipping mask so flag image was clipped to extent of city
+boundaries
+
+Added appropriate text:
+
+Colorado Springs
+We mourn for friends, family, lovers
+Now null from our lives
+
+*I invoke 'null' here in the data sense of 'missing',
+that we still keep the memories and knowledge
+of our community even when we physically are no
+longer together

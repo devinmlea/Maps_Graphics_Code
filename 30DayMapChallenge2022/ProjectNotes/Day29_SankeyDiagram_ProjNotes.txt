@@ -1,0 +1,126 @@
+###########################################################
+###########################################################
+
+#30DayMapChallenge Sankey Diagram
+Author: Devin Lea
+
+Date project started: 11/29/2022
+Last updated: 11/30/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- R
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Main goal is to use this for my Out of My Comfort Zone map
+for #30DayMapChallenge since I had never had made a Sankey
+Diagram
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+The main source I used to help guide me in the production of my own diagram:
+https://r-graph-gallery.com/sankey-diagram.html
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+I first created a .csv file with four columns:
+(1) Source, (2) Target, (3) Value, (4) groups
+
+(1) was all the individual days, these might be multiple
+depending to how many (2) targets, which were each method
+I used, there were for each day. (3) value was proportional
+to how much work I did using each tool/method, but the total
+value for each day was the same. For example, for me I used
+total of 6 for each day. If I only used one tool, then the
+value was 6. If I used two tools equally, each would have
+value of 3. The fourth column (4) groups was an identifier
+(a through h) for each unique target. My groups were:
+
+a - Illustrator
+b - QGIS
+c - R
+d - Excel
+e - photoshop
+f - video editor
+g - snow
+h - aerialod
+i - days
+
+My R code I used was as follows:
+
+############################################################
+Start of Rstats code:
+
+#install.packages("networkD3")
+
+library(networkD3)
+library(dplyr)
+
+
+setwd("your file path")
+
+MapLinks = "your file path/Data.csv"
+
+# Read csv file to Links.df
+Links.df <- read.csv(MapLinks)
+
+# From these flows we need to create a node data frame: it lists every entities involved in the flow
+nodes <- data.frame(
+  name=c(as.character(Links.df$Source), 
+         as.character(Links.df$Target)) %>% unique()
+)
+
+# With networkD3, connection must be provided using id, not using real name like in the links dataframe.. So we need to reformat it.
+Links.df$IDsource <- match(Links.df$Source, nodes$name)-1 
+Links.df$IDtarget <- match(Links.df$Target, nodes$name)-1
+
+# Add a 'group' column to the nodes data frame:
+# this was because there were 30 days and I had eight groups, adjust yours accordingly
+nodes$group <- as.factor(c("i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","i","h","d","a","e","b","c","g","f"))
+
+# Give a color for each group:
+# decided on my colors from here: https://personal.sron.nl/~pault/#sec:qualitative
+my_color <- 'd3.scaleOrdinal() .domain(["a", "b", "c", "d", "e", "f", "g", "h", "i"]) .range(["#44BB99", "#FFAABB", "#77AADD", "#AA4499", "#EEDD88", "#EE8866", "#99DDFF", "#BBCC33", "#DDDDDD"])'
+
+# Make the Network and Diagram
+p <- sankeyNetwork(Links = Links.df, Nodes = nodes,
+                   Source = "IDsource", Target = "IDtarget",
+                   Value = "Value", NodeID = "name", colourScale = my_color,
+                   LinkGroup = "groups", NodeGroup = "group", fontSize = 14,
+                   sinksRight=FALSE)
+p
+
+end Rstats code
+############################################################
+
+The image quality when I saved the output wasn't as good as I wanted it, so 
+I used web capture after showing the image in a new window to get a slightly
+better quality image. I then imported the image into Adobe Illustrator and
+to a new .ai file and added applicable text before saving and exporting
+as the final image.

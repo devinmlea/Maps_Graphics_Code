@@ -1,0 +1,106 @@
+###########################################################
+###########################################################
+
+Detroit Black/White Streets Map
+Author: Devin Lea
+
+Date project started: 11/25/2022
+Last updated: 11/25/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+I wanted to create a map using only 2 individual colors, so I thought
+streets as one color and background as the other would work well and decided
+to map Detroit
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) Wayne county roads (shapefile)
+2) Michigan incorporated places (shapefile)
+
+Shapefiles acquired from the US Census Bureau here:
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+The specific files I acquired were:
+Wayne county roads (tl_2021_26163_roads)
+Michigan incorporated places (tl_2021_26_place)
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the polygon layers
+
+First, I selected Detroit city polygon from the Michigan incorporated
+places layer and saved the polygon as a new shapefile "DetroitBnd.shp"
+
+I then used the clip tool to clip the Wayne County Roads Layer based
+on DetroitBnd layer, new file named DetroitRoads
+
+For DetroitRoads, I went to properties -> symbology and changed their value to be shown by MTFCC column.
+I made all the classes transparent except the following four:
+S1100 (Primary Roads)
+S1200 (Secondary Roads)
+S1400 (Local Roads and City Streets)
+S1630 (Ramps)
+
+All four layers had color of R:245, G:245, B:245
+The stroke weight for each class was set as follows:
+S1100 - 0.45
+S1200 - 0.25
+S1400 - 0.10
+S1630 - 0.40
+
+I then exported at scale of 1:110,000 and 150dpi to a PDF
+
+Then opened new Adobe Illustrator file and first used the
+rectangle tool to create a black rectangle (R:20,G:20,B:20)
+that covered the artboard
+
+I then opened and copied the data from the PDF to the .ai file.
+
+I made some small manual adjustments to a few streets to make
+the map more visually appealing.
+
+I rotated the map data about 20 degrees to give the top extent
+of the city (8 mile) the tilt down to the right
+
+I then added title and text. Font was Bauhaus 93, black fill, white
+1pt stroke, 60pt font size. I didn't like how the D looked, so I
+used a black rectangle and white lines to connect the bottom part
+of D in Detroit.

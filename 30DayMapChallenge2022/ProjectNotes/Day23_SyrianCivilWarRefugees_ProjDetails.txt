@@ -1,0 +1,110 @@
+###########################################################
+###########################################################
+
+Syrian Civil War Refugees Map
+Author: Devin Lea
+
+Date project started: 11/23/2022
+Last updated: 12/1/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my movement map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+1) Natural Earth Data Shaded Relief, medium size (tiff)
+2) 1:10m Oceans Natural Earth Data (shapefile)
+3) 1:10m Countries (shapefile)
+
+
+1) Natural Earth Data Shaded Relief, medium size (tiff)
+Obtained here:
+https://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/
+
+2) 1:10m Oceans Natural Earth Data (shapefile)
+Obtained here:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+3) 1:10m Countries (shapefile)
+Obtained here:
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+Specifically, I used the Ukraine POV under countries point-of-views
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the data layers in following order:
+- countries (top)
+- oceans
+- shaded relief (bottom)
+
+Made countries fill fully transparent and stroke was 0.26 black
+Oceans fill color set to R:166, G:206, B:227
+
+The exported to PDF at 1:18,000,000 scale
+
+Opened exported PDF in Adobe Illustrator and copied map layers to
+a new .ai file
+
+I based some of my map designs off of map here:
+https://www.vox.com/2015/9/27/9394959/syria-refugee-map
+
+Above the shaded relief data but below the oceans and countries data I added
+a rectangle with color 255,255,255 and that I made 85% opaque to fade out
+some of the shaded relief and make it a lighter color
+
+I obtained the data for the migration arrows from following source:
+https://www.statista.com/statistics/740233/major-syrian-refugee-hosting-countries-worldwide/
+
+Using this source I created the flow arrows using the curvature tool.
+I set the color of the arrows to hex:#6A51A3 and 80% opacity
+I used the same color for all countries (except Syria) where refugees went
+to, only difference was I set opacity to 20%. Syria was set as same color
+but opacity at 60%.
+
+I then found numbers for internal displacement and refugees here:
+https://www.mercycorps.org/blog/quick-facts-syria-crisis
+
+I added these numbers and set sizes of bars based on proportion of total
+and colors accordingly
+
+Added all relevent text to finish

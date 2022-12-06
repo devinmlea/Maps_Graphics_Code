@@ -1,0 +1,88 @@
+###########################################################
+###########################################################
+
+New Islands Map
+Author: Devin Lea
+
+Date project started: 11/26/2022
+Last updated: 12/1/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my Islands map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) Dynamaxion Projection Map (Wikimedia)
+2) List of New Islands (Wikipedia), created new .csv
+
+1) Dynamaxion Projection Map (Wikimedia)
+I originally planned to make this projection on my own, but I was unable to
+do it in QGIS with the data I had. Searching around I found that this map existed
+on Wikimedia and would serve as a good template for my map:
+https://commons.wikimedia.org/wiki/File:Dynamaxion_Map_of_the_World.png
+
+2) List of New Islands (Wikipedia)
+https://en.wikipedia.org/wiki/List_of_new_islands
+I took all the islands from this list that were created in the past century
+(1922 or later) and added them to a new .csv file, along with mode of creation
+and latitude/longitude coordinates (most had coordinates on associated Wikipedia
+page).
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, I opened QGIS and loaded in the .csv file and displayed the points
+along with a simple world land polygon layer (not listed in data acquisition).
+This was simply to see the locations around the world where the islands were.
+
+Otherwise, the creation of this map was pretty simple. I loaded the Dynamaxion
+Projection Map into a new Adobe Illustrator file, then added the islands points
+using the ellipse tool in their locations on the map. I set the colors using
+a guide I found on colorblind friendly qualitative color schemes:
+https://personal.sron.nl/~pault/#sec:qualitative
+
+Colors were as follows:
+Volcanism - #CC3311
+Earthquake - #EE7733
+Erosion or Deposition - #EE3377
+Glacial Retreat - #33BBEE
+
+Finally added relevant text and callouts where needed
