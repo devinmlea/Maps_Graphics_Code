@@ -1,0 +1,193 @@
+###########################################################
+###########################################################
+
+Accra, Ghana Map
+Author: Devin Lea
+
+Date project started: 11/6/2022
+Last updated: 11/8/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my OpenStreetMap contribution for #30DayMapChallenge
+
+I also wanted to use this as an opportunity to play around with colors in QGIS
+and trying to use colors from images of the city to set color palette
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were five data sources I acquired:
+1) Ghana OpenStreetMap shapefiles from GeoFabrik (shapefiles)
+2) Ghana Subnational Administrative Boundaries (shapefile)
+3) Natural Earth 1:10m oceans shapefile (shapefile)
+
+
+1) Ghana OpenStreetMap shapefiles from GeoFabrik (shapefiles)
+Obtained package of shapefiles for Ghana from GeoFabrik website:
+https://download.geofabrik.de/africa/ghana.html
+Downloaded the 'ghana-latest-free.shp.zip' file on 11/7/22
+Unzipped and loaded layers into QGIS
+
+
+2) Ghana Subnational Administrative Boundaries (shapefile)
+Obtained adminstrative boundaries shapefiles from HumData:
+https://data.humdata.org/dataset/cod-ab-gha
+downloaded 'gha_admbnda_gss_20210308_SHP.zip' file
+Unzipped and loaded layer into QGIS
+
+
+3) Natural Earth 1:10m oceans shapefile (shapefile)
+Downloaded layer from Natural Earth Data:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Downloaded Ocean Layer, Unzipped, loaded into QGIS
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+I loaded the following layers from OpenStreetMap into QGIS:
+'gis_osm_water_a_free_1"
+"gis_osm_waterways_free_1"
+"gis_osm_roads_free_1"
+"gis_osm_landuse_a_free_1"
+
+For "gis_osm_waterways_free_1" I used select by attributes to make the following selection:
+"fclass" = 'river' OR "fclass" = 'stream'
+I then used Export -> Save Selected Features As to save these features to a new layer I
+called 'Ghana_rivers_streams.shp'
+
+For "gis_osm_roads_free_1" I used select by attributes to make the following selection:
+"fclass" = 'trunk'
+"fclass" = 'motorway'
+"fclass" = 'primary'
+"fclass" = 'secondary'
+"fclass" = 'tertiary'
+For each of these selections I used Export -> Save Selected Features As to save these features
+to the following new layers:
+'Ghana_trunk_roads'
+'Ghana_motorway_roads'
+'Ghana_primary_roads'
+'Ghana_secondary_roads'
+'Ghana_tertiary_roads'
+
+For "gis_osm_landuse_a_free_1" I used select by attributes to make the following selection:
+"fclass" = 'park' OR "fclass" = 'forest'
+I then used Export -> Save Selected Features As to save these features to a new layer I
+called 'Ghana_parks_forests.shp'
+
+I also then loaded the 'gha_admbnda_adm2_gss_20210308' layer. After playing around with colors
+and looking at aerial photographs of Accra, I decided I wanted to have part of the region
+that was more urban to have a more brown/red earthy color, while parts farther from city center
+that were less urban would have a green color. For what I determined to be more urban, I selected
+the following administrative units (by 'ADM2_PCODE'):
+GH0701, GH0702, GH0703, GH0704, GH0708, GH0709, GH0710, GH0711, GH0712, GH0718,
+GH0720, GH0721, GH0723, GH0725, GH0727, GH0728
+
+I then used Export -> Save Selected Features As to save these features to a new layer I
+called 'AccraUrban'
+
+I then inverted the selected and again used Export -> Save Selected Features As to save these
+features to a new layer I called 'AccraGreen'
+
+I also loaded in the 1:10m Oceans Natural Earth Data layer
+
+I arranged the layers in the following order in QGIS (turning off/removing those not listed):
+'Ghana_trunk_roads'
+'Ghana_motorway_roads'
+'Ghana_primary_roads'
+'Ghana_secondary_roads'
+'Ghana_tertiary_roads'
+'Ghana_parks_forests'
+'Ghana_rivers_streams'
+'gis_osm_water_a_free_1'
+'gis_osm_roads_free_1'
+'AccraUrban'
+'AccraGreen'
+'ne_10m_ocean'
+
+
+For the 'Ghana_trunk_roads', 'Ghana_motorway_roads', 'Ghana_primary_roads', 'Ghana_secondary_roads', and
+'Ghana_tertiary_roads' layer I set color to R:80,B:80,G:85. I set stroke sizes as following:
+'Ghana_trunk_roads': 0.8
+'Ghana_motorway_roads': 0.8
+'Ghana_primary_roads': 0.6
+'Ghana_secondary_roads': 0.4
+'Ghana_tertiary_roads': 0.2
+
+For 'gis_osm_roads_free_1' I wanted to match coloring of dirt roads that are still common even in the city,
+so I acquired an image from Wikimedia at link here:
+https://commons.wikimedia.org/wiki/File:University_Of_Ghana,_Accra,_Ghana_-_panoramio.jpg
+I sampled the color of the road in this image and acquired the color:
+(#b47d54), R:180,B:125,G:84
+This color was set for 'gis_osm_roads_free_1', stroke size = 0.08
+
+For 'gis_osm_water_a_free_1', 'Ghana_rivers_streams', and 'ne_10m_ocean' I set fill and stroke
+color to: (#8bc6e3)
+
+For 'Ghana_parks_forests', fill and stroke color set to: (#759472)
+
+'AccraUrban' fill color: #877d54, opacity = 40%
+'AccraGreen' fill color: #5c7d54, opacity = 40%
+
+Then exported map to PDF using following parameters:
+1:150000
+dpi: 250
+W: -0.373175949
+N: 5.689458117
+E: -0.051790682
+S: 5.483618505
+
+
+Opened PDF in Adobe Illustrator and copied data to a new .ai file, resizing appropriately
+to new artboard.
+
+Then used ellipse tool to make circle, then selected all data and created a clipping mask to clip
+the map to the circle
+
+Used star tool to create star, fill and stroke were black
+
+Typed 'ACCRA' and 'GHANA', 120 PT, Source Serif Variable font, 500 distance between characters
+I then created three rectangles using the rectangle tools, each one had fill color based on
+ghana flag colors from this website:
+https://www.flagcolorcodes.com/ghana
+
+For the texts I then used Effect -> Warp -> Arc to create arc of 90 and -90 to warp the
+text.
+
+
+

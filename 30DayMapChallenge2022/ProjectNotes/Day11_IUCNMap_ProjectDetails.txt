@@ -1,0 +1,137 @@
+###########################################################
+###########################################################
+
+IUCN "Red" Red List Critically Endangered Animals
+Author: Devin Lea
+
+Date project started: 11/11/2022
+Last updated: 11/17/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Photoshop
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my red map for #30DayMapChallenge
+
+I ended up going with this map idea after my first red map
+idea didn't work out, but in the end this worked well
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) Natural Earth 50m land shapefile (shapefile)
+2) Natural Earth 50m ocean shapefile (shapefile)
+
+
+2) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+3) Natural Earth 50m ocean shapefile
+
+Downloaded 1:50m scale ocean shapefile of Earth oceans from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the land and ocean polygons
+
+I first changed projection to Robinson Projection (ESRI:54030)
+
+Then changed colors for each fill (no stroke for either):
+land: R:235,G:230,B:230
+ocean: R:200,G:200,B:200
+
+Then exported map as PDF with following parameters:
+1:150,000,000
+200 dpi
+N: 11323011.7573
+E: 17363866.9566
+S: -10740592.4319
+W: -17084883.0786
+
+I then collected images for all of the "Red" animals (animals with red in their common name)
+that are listed as critically endanged on the IUCN list via Wikipedia list here:
+https://en.wikipedia.org/wiki/Lists_of_IUCN_Red_List_critically_endangered_species
+*Note: this list isn't up to date and I should have directly used the IUCN list because
+I missed a few species.
+
+Here are images I could find for most of the listed species.
+https://commons.wikimedia.org/wiki/File:New_Zealand_dotterel._(_Charadrius_obscurus)_(27577630635).jpg
+https://commons.wikimedia.org/wiki/File:Red-headed_Vulture_Sarcogyps_calvus,_Bhopal,_India.jpg
+https://commons.wikimedia.org/wiki/File:TrichoglossusAureocinctusKeulemans.jpg
+https://commons.wikimedia.org/wiki/File:Red-fronted_Macaw_Ara_rubrogenys_National_Aviary_2112px.jpg
+https://commons.wikimedia.org/wiki/File:Cacatua_haematuropygia.jpg (Red-vented cockatoo)
+https://commons.wikimedia.org/wiki/File:California_red-legged_frog_(Rana_draytonii)_-_Flickr_-_GregTheBusker_(2).jpg
+https://commons.wikimedia.org/wiki/File:Eleutherodactylus_oxyrhyncus_in_Erp%C3%A9tologie_G%C3%A9n%C3%A9rale_plate_89.jpg (Rednose robber frog)
+https://commons.wikimedia.org/wiki/File:Melanophryniscus_dorsalis02.jpg (used in place of red-belly toad)
+https://commons.wikimedia.org/wiki/File:Preuss%27s_red_colobus.jpg
+https://commons.wikimedia.org/wiki/File:Piliocolobus_epieni.jpg (Niger Delta Red Colobus)
+https://commons.wikimedia.org/wiki/File:Santamartamys,_David_Valle_Martinez.jpg
+https://commons.wikimedia.org/wiki/File:Varecia_rubra_(habitus).jpg
+https://commons.wikimedia.org/wiki/File:07-03-23RedWolfAlbanyGAChehaw.jpg
+https://www.bushheritage.org.au/species/red-finned-blue-eye (copyright Adam Kerezsy)
+https://fynbosfishtrust.org/fynbos-fish/twee-river-redfin/ (copyright FYNBOS FISH TRUST)
+https://en.wikipedia.org/wiki/Hypselobarbus_thomassi
+https://en.wikipedia.org/wiki/Burchell%27s_redfin#/media/File:Pseudobarbus_burchelli,_Jan_du_Toit's_River,_a.jpg
+https://en.wikipedia.org/wiki/Red-tailed_black_shark#/media/File:Epalzeorhynchos_bicolor1.jpg
+https://en.wikipedia.org/wiki/Nannostomus_mortenthaleri#/media/File:Red_Pencilfish.jpg
+https://en.wikipedia.org/wiki/Red_handfish#/media/File:CSIRO_ScienceImage_2535_The_Red_Handfish.jpg
+https://commons.wikimedia.org/wiki/File:Red-crowned_roofed_turtle.jpg
+https://www.inaturalist.org/taxa/30030-Geophis-damiani (Copyright Josiah Townsend)
+
+For each of these images, after downloading them I opened them in Adobe Photoshop to edit
+them. Specifically, for each image I used Select -> Select and Mask tools, which allowed
+me to highlight the animals and remove their backgrounds.
+
+I also collected where each species was found, so after masking out backgrounds for
+each animal I had a picture for, I started a new session in Adobe Illustrator. I opened
+the PDF file of land and oceans and copied and scaled it to a new .ai file. I then added
+the pictures for each animal around the Robinson Projection and added points on the map
+corresponding to each animal, which I connected with lines.
+For the points, fill color was R:255,G:0,B:0, 2 pt black stroke (0,0,0), then 60% opacity
+Lines same as points except stroke color was red fill color of points
+
+I then added all the text and other relevant information to the map
+

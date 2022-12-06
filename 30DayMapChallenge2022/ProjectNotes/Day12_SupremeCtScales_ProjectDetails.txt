@@ -1,0 +1,102 @@
+###########################################################
+###########################################################
+
+Supreme Court System/Judicial Scales per state
+Author: Devin Lea
+
+Date project started: 11/12/2022
+Last updated: 11/17/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my scale map for #30DayMapChallenge
+
+I didn't really have an idea going into this day what I was
+going to do, so stumbled across supreme court stuff thinking
+about "scales of justice" and developed the idea from there
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+I didn't use any GIS type of data for this map. I created my own hexmap of US
+states because I didn't like how hexagons were being warped by projections
+when using geospatial data.
+
+However, the data I used for the map came from a couple sources. First, the
+data about term limits and selection choice of justices for state supreme courts
+came from this Wikipedia page:
+https://en.wikipedia.org/wiki/State_supreme_court
+The data about levels of state courts I found from searching "levels of state courts"
+in Google and creating my own graphic on my map that fit results and articles
+I found describing these levels.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Originally I had font Franklin Gothic Medium Cond, switched to Myriad Pro because of
+issue with creating halo around the state abbreviations, but in future iteration
+will probably change back to Franklin Gothic Medium Cond because it was better visually
+
+I first had to decide how I wanted to color the two types of data. For selection
+of justices, I simplified to four possible categories and each hexagon would be
+assigned from one of these four:
+1) Appointment by governor and/or state legislature
+2) Partisan Election
+3) Non-Partisan Election
+4) Missouri Plan
+
+Similarly, for justice term limits, I grouped possibilities into three categories:
+6-8 years
+10-15 years
+Life
+
+I decided to go with a four color scheme for the selection process, while used
+grayscale for the three term limit options, so that these could be distinctly
+seen from each other, even though term limits would be a smaller hexagon inside
+selection of justices.
+
+I set colors for selection process and terms, then put white halo around text
+(I would choose to not do this in future and just change text to either white
+or black where better suited)
+
+I then obtained and added the stock photo of the scales and added the boxes
+and text showing progress of judicial scales
+
+Then added other text and key
+

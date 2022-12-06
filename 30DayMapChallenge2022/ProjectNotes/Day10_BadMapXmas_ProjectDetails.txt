@@ -1,0 +1,108 @@
+###########################################################
+###########################################################
+
+All I Want For Christmas Is You
+Author: Devin Lea
+
+Date project started: 11/10/2022
+Last updated: 11/10/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my bad map for #30DayMapChallenge
+
+I figured make a fun topic for the bad map
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+2) Mariah Carey Image (Wikipedia)
+
+
+1) US Census Bureau 20m States Cartographic Boundary Shapefile
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+2) Mariah Carey Image (wikipedia)
+https://en.wikipedia.org/wiki/File:Merry_Christmas_Mariah_Carey.png
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in states polygons
+
+Given the extent of my data (USA), I wanted a projected coordinate that covered the
+extent of all US holdings, so I chose EPSG:2163, US National Atlas Equal Area.
+
+I then started an editing session and added a new field called "XMas" that was an
+integer field. I then starting at the top of the attribute table alternatingly
+assigned 1 or 2 for each polygon. Next, I changed the colors, assigning a red
+color to 1s (hex:e31a1c) and green to 2s (hex:33a02c)
+
+Now for exporting to PDF. For contiguous United States, I used following parameters:
+1:25,000,000
+dpi:200
+N: 1035062.3610
+E:3071442.8011
+S:-2523583.4760
+W:-2484807.2045
+
+For Alaska:
+1:25,000,000
+dpi:200
+N:4468031.1145
+E:41963.6314
+S:909385.2775
+W:-5514286.3743
+
+For Hawaii
+1:12,500,000
+dpi:200
+N:228083.1935
+E:-4049156.1645
+S:-1551239.7250
+W:-6827281.1673
+
+I then created new .ai file in Adobe Illustrator and loaded and copied the data
+from the Contiguous US, Alaska, Hawaii, Puerto Rico, and Guam/Mariana Islands.
+I also opened and copied in the album cover for Mariah Carey's Merry Christmas
+album, then finally added text

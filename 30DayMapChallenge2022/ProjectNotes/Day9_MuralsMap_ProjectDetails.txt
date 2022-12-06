@@ -1,0 +1,115 @@
+###########################################################
+###########################################################
+
+Berkley Murals Map
+Author: Devin Lea
+
+Date project started: 11/5/2022
+Last updated: 11/17/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my space map for #30DayMapChallenge
+
+I thought this would be both a fun conceptualization of space as well as
+giving me the chance to make something fun showing off the place I live
+and often walk or pass by many of these murals
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+Acquired 3 main data sources:
+
+1) Michigan building footprints by Microsoft Maps (geoJSON layer)
+2) Oakland county roads (shapefile)
+3) Pictures of Berkley Murals
+
+
+1) Michigan building footprints by Microsoft Maps (geoJSON layer)
+
+The building footprints I used were from Microsoft's US Building Footprints,
+which I acquired from this link:
+https://github.com/microsoft/USBuildingFootprints
+Because this file is so big, as part of another project I had the buildings
+broken up into multiple layers, which I used for this map.
+
+
+2) Oakland county roads
+
+This US Census Bureau layer I obtained from following link:
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+I selected 2021 year, then for state "Michigan" and county "Oakland county"
+Unzipped file and loaded in QGIS
+
+3) Pictures of Berkley Murals
+All pictures used for this map are my own that I took. Living in Berkley I knew
+where generally to find many of the murals, but I also walked through a lot of
+areas where I expected I might find some and found a few I didn't know existed
+before this project.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the buildings footprints and roads
+and zoomed in to area of Berkley.
+
+Set roads color to white and buildings color to gray (R:120,B:120,G:120)
+
+I then exported the map as a PDF using Project -> Import/Export ->
+Export Map to PDF.
+
+I then created a new .ai file in Adobe Illustrator. Using the rectangle tool
+I covered the artboard with a black (0,0,0) rectangle. I then opened the
+PDF layer containing roads and building footprints and copied them into
+my .ai file.
+
+I knew the murals were all generally on 11 mile, Coolidge Hwy, and 12 mile, but
+if North was up this made placing a title difficult. I decided to rotate the
+map data 90 degrees so that the west extent of my area of interest (bounded by
+Greenfield Road) was up and that I could use this area for my title without
+obscuring mural locations. I also knew that it was not likely going to be possible
+to put the mural pictures on their actual locations, so I decided the best choice
+was to fill the center of the map with the pictures that would be matched by 
+numbers with their map locations ringing the edge of the map along the three main
+roads with murals.
+
+After rotating and scaling the map to the artboard, I increased the stroke size of
+roads (10pt for the four main roads, 3 pt for others) and labeled the four main
+roads (11 mile, 12 mile, Greenfield Rd, Coolidge Hwy).
+
+I used the rectangle tool again to make a dark gray partially transparent rectangle
+in the center of the map, and on top of this I placed my images and numbered each
+one, then placing the matching number where it is approximately located on the map.
+
+Lastly, added title, north arrow, and my info.
+
