@@ -1,0 +1,75 @@
+###########################################################
+###########################################################
+
+Rotating Globe
+Author: Devin Lea
+
+Date project started: 11/18/2022
+Last updated: 10/21/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my globe map for #30DayMapChallenge
+
+I had never used globe builder plugin so I decided to try it
+for this map
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data.
+
+The only data source I used was data via the QGIS Globe Builder Plugin.
+In QGIS I went to the Plugin menu and installed and then opened Globe
+Builder. 
+
+I changed colors as described here:
+Background color = white
+Country fill color was black/dark gray to match color
+of boundaries
+
+Changed rotation to 23.5 degrees
+
+I then set latitude as 0 and longitude starting at 0 and changing by
+increments of 10 every iteration for exporting (-10, -20, and so on
+all the way around the world)
+
+Export parameters
+Scale: 1:100,000,000
+100dpi
+
+After generating exports at every 10 degrees of latitude, I took all the exported
+images and used them to make an animation in the video editor software on my
+computer. I assigned a length of 0.2 seconds to each frame so that the earth
+completed a rotation in about 6-7 seconds.
+

@@ -1,0 +1,158 @@
+###########################################################
+###########################################################
+
+"Right-To-Work" & Minimum Wage in USA map
+Author: Devin Lea
+
+Date project started: 11/14/2022
+Last updated: 11/14/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my hexagons map for #30DayMapChallenge
+
+I also wanted to see a visualization of relationship between
+"Right-To-Work" places (or not) and their minimum wages
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+
+I didn't use any GIS type of data for this map. I created my own hexmap of US
+states, territories, and commonwealths because I didn't like how hexagons
+were being warped by projections when using geospatial data.
+
+However, the data I used for the map came from a couple sources. First, the
+minimum wage data came from the US Department of Labor website at this link:
+https://www.dol.gov/agencies/whd/minimum-wage/state
+When I acquired them, the last update was October 1, 2022
+
+The data on whether a state, territory, or commonwealth had or did not have
+a "Right-To-Work" law at time of making the map was determined both from
+Wikipedia data:
+https://en.wikipedia.org/wiki/Right-to-work_law
+as well as from:
+https://www.nrtw.org/right-to-work-states/
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+In my hex template I start from I had font Franklin Gothic Medium Cond
+
+I first had to decide how I wanted to color my data. I decided there would be four
+possible categories and each hexagon would be assigned from one of these four:
+1) Has "Right-To-Work" law and pays federal minimum wage
+2) Has "Right-To-Work" law and pays above federal minimum wage
+3) No "Right-To-Work" law and pays federal minimum wage
+4) No "Right-To-Work" law and pays above federal minimum wage
+
+Due to data structure I wanted a diverging color scheme and ideally with colors that
+generally were colorblind friendly. I settled on using colors from the Spending Per
+Student, by School District map at link here:
+https://knightlab.northwestern.edu/2016/07/18/three-tools-to-help-you-make-colorblind-friendly-graphics/
+
+I sampled the colors to obtain R,G,B values:
+Orange- R:219,G:67,B:37 (R2W,min)
+LightOr- R:237,G:162,B:78 (R2W,+min)
+LightB- R:92,G:195,B:175 (Non,min)
+Blue- R:10,G:98,B:100 (non,+min)
+
+I decided on the following pairing of colors to categories:
+1) Has "Right-To-Work" law and pays federal minimum wage = Orange
+2) Has "Right-To-Work" law and pays above federal minimum wage = LightOr
+3) No "Right-To-Work" law and pays federal minimum wage = LightB
+4) No "Right-To-Work" law and pays above federal minimum wage = Blue
+
+I then assigned the colors to each hexagon based on its category:
+AL - Orange
+AK - Blue
+AZ - LightOr
+AR - LightOr
+CA - Blue
+CO - Blue
+CT - Blue
+DE - Blue
+DC - Blue
+FL - LightOr
+GA - Orange
+HI - Blue
+ID - Orange
+IL - Blue
+IN - Orange
+IA - Orange
+KS - Orange
+KY - Orange
+LA - Orange
+ME - Blue
+MD - Blue
+MA - Blue
+MI - LightOr
+MN - Blue
+MS - Orange
+MO - Blue
+MT - Blue
+NE - LightOr
+NV - LightOr
+NH - LightB
+NJ - Blue
+NM - Blue
+NY - Blue
+NC - Orange
+ND - Orange
+OH - Blue
+OK - Orange
+OR - Blue
+PA - LightB
+RI - Blue
+SC - Orange
+SD - LightOr
+TN - Orange
+TX - Orange
+UT - Orange
+VT - Blue
+VA - LightOr
+WA - Blue
+WV - LightOr
+WI - Orange
+WY - Orange
+
+I then added minimum wage for each hexagon and realigned text so it was in the
+middle of the respective hexagon. I also changed font on orange and blue to
+white text so it was easier to see.
+
+Added remaining elements like key and relevant text

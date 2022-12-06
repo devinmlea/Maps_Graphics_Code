@@ -1,0 +1,117 @@
+###########################################################
+###########################################################
+
+5-Minute Map
+National Parks and National Forests Map
+Author: Devin Lea
+
+Date project started: 11/13/2022
+Last updated: 11/13/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my 5 minute map for #30DayMapChallenge
+
+I wanted a couple data layers for this purpose that I could just
+display 
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+If you count acquiring and doing a few prep things before actually taking the actions
+of making the map, the map took longer. Below are the data prep steps I took before
+actually the 5 minutes of making the map.
+
+There were four data sources I acquired:
+1) Natural Earth 50m land shapefile (shapefile)
+2) US Census Bureau national boundaries layer (shapefile)
+3) National Forest Service Lands Boundary Layer (shapefile)
+4) National Parks Land Boundary Layer (shapefile)
+
+1) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+2) US Census Bureau 5m Nation Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+3) National Forest polygons
+
+From the USDA Forest Service website I downloaded national dataset of National Forest polygons,
+with the file named "Administrative Forest Boundaries" from:
+https://data.fs.usda.gov/geodata/edw/datasets.php?dsetCategory=boundaries
+
+I downloaded this shapefile then imported it into QGIS
+
+
+4) National Parks Land Boundary Layer (shapefile)
+Acquired National Parks Boundaries from link:
+https://public-nps.opendata.arcgis.com/search?collection=Dataset&q=boundaries
+Downloaded from link named "nps boundary"
+Unzipped and loaded file into QGIS
+
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+I did the following steps in about 5 minutes
+
+With QGIS opened, I loaded in the four layers and arranged in order:
+-National Parks Lands
+-National Forest Lands
+-National Boundaries Layer
+-Natural Earth 50m layer
+
+Given the extent of my data (USA), I changed projection to EPSG 2163,
+US National Atlas Equal Area
+
+I then in symbology changed each layer as following:
+Forest service layer: fill:R:0,G:80,B:47, stroke:0.2, same color
+NP color: fill:R:197,G:108,B:57, stroke:0.2, same color
+1:50m Land color : fill:white, stroke:0.1,R:220,G:220,B:220
+National boundary layer colors: fill:white, stroke:0.1, black color
+
+Then set scale to 1:55,000,000 and exported as jpg image
+
+I then loaded the file in Adobe Illustrator and used rectangle tool
+to make the key and eyedropper color to match colors to the map layers,
+then used type tool to add text

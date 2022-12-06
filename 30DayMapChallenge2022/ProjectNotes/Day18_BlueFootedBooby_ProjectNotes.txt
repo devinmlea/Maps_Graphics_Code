@@ -1,0 +1,109 @@
+###########################################################
+###########################################################
+
+Blue-Footed Booby Map
+Author: Devin Lea
+
+Date project started: 11/18/2022
+Last updated: 11/21/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my blue map for #30DayMapChallenge
+
+I thought this would be a fun map to make
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) 1:10m land polygons from Natural Earth Data (shapefile)
+2) Blue-Footed Booby range from IUCN Red List (shapefile)
+3) Blue-Footed Booby picture (Wikimedia Commons)
+4) Blue-Footed Booby facts (Wikipedia)
+
+
+1) 1:10m land polygons from Natural Earth Data (shapefile)
+Downloaded here:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Unzipped folder and loaded into QGIS
+
+2) Blue-Footed Booby range from IUCN Red List (shapefile)
+Went to species list and found Blue-Footed Booby information:
+https://www.iucnredlist.org/species/22696683/168988087
+Then requested download of Blue-Footed Booby habitat range (requires
+creating a free account). Then downloaded and unzipped data before
+loading into QGIS
+
+3) Blue-Footed Booby picture (Wikimedia Commons)
+Acquired picture from Wikimedia Commons
+https://commons.wikimedia.org/wiki/File:Sula_nebouxii_-Santa_Cruz,_Galapagos_Islands,_Ecuador-8_(1).jpg
+By Ndecam from London, UK - Blue-footed BoobyUploaded by snowmanradio, CC BY 2.0, https://commons.wikimedia.org/w/index.php?curid=16935008
+
+4) Blue-Footed Booby facts (Wikipedia)
+https://en.wikipedia.org/wiki/Blue-footed_booby
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Opened QGIS and loaded land and habitat area
+
+Changed symbology as follows:
+Land
+Fill:
+R:233,G:235,B:237
+Stroke:
+0.15, R:200,G:200,B:205
+
+Habitat fill
+R:129,G177,B249
+stroke: same color: 0.2
+70% opacity
+
+I then exported as image the map at 1:42,000,000 while generally
+centered on habitat distribution
+
+I then opened Adobe Illustrator and copied the image into a
+new .ai file
+
+I softened the edges of the image by selecting the image and
+using Effect -> Stylize -> Feather and using 100pt feathering
+
+I then added the picture and text
+

@@ -1,0 +1,98 @@
+###########################################################
+###########################################################
+
+Minimal MI Map
+20%+ Pov MI School Districts
+Author: Devin Lea
+
+Date project started: 11/16/2022
+Last updated: 11/17/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my minimal map for #30DayMapChallenge
+
+I wanted a very minimal style and decided on just using words
+instead of any map layers, emulating a style of map by Tim Stallmann in
+"A People's Atlas of Detroit"
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) Percent Students Below Poverty Data (spreadsheet)
+2) 3) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+
+
+1) Percent Students Below Poverty Data 
+
+I acquired the data from this link from MI Dept. of Education:
+https://www.michigan.gov/mde/services/school-performance-supports/educational-supports/tools-and-resources/us-census-data
+
+I downloaded data from the "Michigan Census 2020" link, which provided percentage
+of students below poverty line for all Michigan school districts. I simply
+copied the data to a new spreadsheet in Microsoft Excel and sorted by percentage
+of students below poverty. I decided to focus on districts greater than 20% poverty,
+which came out to 103 districts.
+
+2) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+First opened QGIS and loaded states boundary shapefile. I selected Michigan and saved
+it as its own layer. Then I exported the layer as a PDF at 1:5,500,000 resolution.
+
+I opened this PDF in Adobe Illustrator and copied the layer on to a new .ai file and
+scaled it appropriately.
+
+I then added text for each of the 103 school districts. I first placed them as close as
+I could to their actual geographic locations and took a screenshot once they were all
+placed, so that then I could use this as a guide as I tried in my actual arrangement
+to put the name as close as I could to its actual location, though of course I had to
+make some adjustments.
+
+In my actual arrangement, I chose a standard distance between each line of text, though
+I used spacing to my advantage and used multiple single spaces in places to fit the
+text to the form of the Michigan shapefile. At the end, I simply hid the shapefile,
+thus only showing the school districts text. I then added title and my info.

@@ -1,0 +1,211 @@
+###########################################################
+###########################################################
+
+Pasty Map Michigan UP
+Author: Devin Lea
+
+Date project started: 11/15/2022
+Last updated: 11/21/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel/Notepad
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my food/drink map for #30DayMapChallenge
+
+I kind of just decided to run with this idea since some of my other
+original thoughts were not working. Originally thought to do
+whole state but figured partway through to just focus on UP.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were seven data sources I acquired:
+1) Pasty restaurant locations (Google, .csv I created)
+2) Michigan 1:5m counties (shapefile)
+3) 1:50m lakes polygons (shapefile)
+4) 1:5m state boundaries (shapefile)
+5) 1:50m land polygons (shapefile)
+6) Pasty image (Wikimedia Commons)
+7) Michigan counties population (.csv)
+
+
+1) Pasty restaurant locations (.csv I created)
+In Google search I typed "where can I get a pasty in michigan" and then on
+Google Maps results panned and zoomed in/out all around the Upper Peninsula
+to see all places that were returned in results. I recorded these on a .csv
+file I set up in Microsoft Excel but then switched to Wordpad because I found
+it easier to copy/paste data into Wordpad. For every place I found in my
+Google Search I also used Google Geocoding API manual interface:
+https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder
+to find latitude and longitude for each location, which was saved as part
+of data in my .csv
+* Initially I tried to use https://overpass-turbo.eu/ OpenStreetMap Data with
+call below:
+area[name="Michigan"];
+nwr(41.5,-90.5,48.5,-81.5)[name~"^Pasty"];
+out;
+This didn't return almost any hits, so I decided to collect manually because not
+enough data seemed available via OpenStreetMap
+
+2) Michigan 1:5m counties (shapefile)
+Obtained Michigan counties shapefile from US Census Bureau website
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+I selected Michigan counties using Select by Attribute:
+"STATEFP" = 26
+Then saved the selected polygons as a new shapefile
+
+3) Natural Earth 50m lakes shapefile
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+4) US Census Bureau 5m States Cartographic Boundary Shapefile
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+5) Natural Earth 50m land shapefile
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+6) Pasty image (Wikimedia Commons)
+Obtained from:
+https://commons.wikimedia.org/wiki/File:Cornish_pasty_-_cut.jpeg
+
+7) MI Counties Population Data (.csv)
+Data from here:https://www.michigan-demographics.com/counties_by_population
+The population data are from the 2021 Population Estimates Program and 2020 American Community Survey
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Loaded data layers into QGIS. For .csv pasty restaurant data, used lat
+and long to plot locations as points
+
+First changed projection to EPSG:26989 (NAD83 / Michigan Central)
+
+Layers distributed in following order from top to bottom:
+- Pasty restaurant points
+- Michigan counties
+- 1:50m lakes
+- 1:5m state boundaries
+- 1:50m land
+
+I centered the Upper Peninsula in my viewing window and set scale to
+1:2,700,000, then set symbology for layers as follows:
+
+Michigan Counties:
+Fill Color (hex:e9c591)
+This color was sampled from crust of the pasty image
+Stroke Color (hex:232323), 0.26 width
+
+Lakes:
+Fill Color (hex:a6cee3)
+Stroke Color (hex:232323), 0.26 width
+
+State boundaries
+Fill Color (hex:dcdcdc)
+Stroke Color (hex:232323), 0.2 width
+
+1:50m Land
+Fill Color (hex:dcdcdc)
+Stroke Color (hex:232323), 0.2 width
+
+I then using editing deleted counties in Lower Peninsula that were
+within viewing window so I would only see upper peninsula counties
+
+Then exported map as PDF at 1:2,700,000 and 200 dpi
+
+Opened Adobe Illustrator and copied data from PDF to new .ai file
+
+Loaded and copied Pasty image to map and scaled it appropriately,
+then added text explanation and copied to cover points in each location
+and labeled each location using text
+
+I decided I also wanted to determine the ratio between number of
+residents in each UP county and number of pasty serving places, so
+I acquired population data and calculated the ratio between population
+and number of pasty serving places:
+Delta 35874/7 = 1:5,124
+Baraga 8337/2 = 1:4,168
+Marquette 66403/16 = 1:4,150
+Dickinson 25373/7 = 1:3,624
+Gobebic 14715/5 = 1:2,943
+Menominee 22902/8 = 1:2,862
+Schoolcraft 8031/3 = 1:2,677
+Houghton 35890/16 = 1:2,243
+Iron 11099/6 = 1:1,849
+Alger 9098/5 = 1:1,819
+Chippewa 37418/22 = 1:1,700
+Luce 6286/4 = 1:1,571
+Ontonogan 5802/6 = 1:967
+Mackinac  10781/15 = 1:719
+Keweenaw 2102/3 = 1:700
+
+I then used this to assign colors for each county based on
+the ratio, which I also added as text and matching colors
+to the text for the map. Basically, Mackinac and Keweenaw
+Counties kept the original color I used for the counties
+in the PDF export (hex: e9c591), and then I scaled the colors
+from this
+
+full = 91% V value in QGIS
+
+Delta 40% (80% opacity)
+Baraga 45% (82% opacity)
+Marquette 45% (82% opacity)
+Dickinson 55% (85% opacity)
+Gobebic 60% (85% opacity)
+Menominee 65% (87% opacity)
+Schoolcraft 67% (88% opacity)
+Houghton 70% (90% opacity)
+Iron 75% (92% opacity)
+Alger 75% (92% opacity)
+Chippewa 80% (94% opacity)
+Luce 82% (95% opacity)
+Ontonogan 86%
+Mackinac & Keweenaw 91%
+
+Added any final text and title
