@@ -1,0 +1,151 @@
+###########################################################
+###########################################################
+
+AZA Locations Map
+(As of September 2022)
+Author: Devin Lea
+
+Date project started: 10/5/2022
+Last updated: 10/19/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my lines map for #30DayMapChallenge
+
+I also wanted to create this map to familiarize myself with AZA institutions
+because of my wife's work for an AZA institution
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) AZA USA location data (created .csv file)
+2) Natural Earth 50m land shapefile (shapefile)
+3) Natural Earth 50m lakes shapefile (shapefile)
+4) US Census Bureau 20m states Cartographic Boundary shapefile (shapefile)
+
+1) AZA USA location data
+
+I went to the AZA Current Accredited Zoos and Aquariums webpage:
+https://www.aza.org/current-accreditation-list?locale=en
+
+On this page I copied to a .csv file (named AZA_US_Locations.csv) all institutions
+that were located in the United States. Specifically, I ended up with 5 columns
+in my csv file: Name, City, State, Lat, and Long.
+I used name to verify city and state of the institution on world wide web.
+Lat and Long coordinates I acquired using Google geocoding API interface here:
+https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder
+
+2) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+3) Natural Earth 50m lakes shapefile
+
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+4) US Census Bureau 20m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the land polygons, lakes polygons, states
+polygons, and AZA locations csv as points.
+
+Given the extent of my data (USA), I wanted a projected coordinate system to show
+contiguous US part and decided on using North America Lambert Conformal Conic
+(ESRI: 102009), so I switched to this projection using Project Properties.
+
+I then set colors for each layer. I wanted to use colors from AZA logo and website,
+so I downloaded an example image of AZA logo and color sampled the red, green, blue
+using Paint software. The R,G,B numbers are below for each display color
+Gray: R: 172, G: 161, B: 150
+Orange: R: 244, G: 132, B: 102
+White: R: 255, G: 255, B: 255
+Black: R: 35, G: 35, B: 35
+
+I set land and states as gray fill (states had white stroke of 0.26, land no stroke),
+location points as orange (with black stroke), and lakes as black (no stroke). The background
+once I go to Adobe Illustrator I will also be black. The orange will be
+used for text in Adobe Illustrator.
+
+
+I then exported the land and lakes as a PDF using Project > Import/Export > Export Map to PDF
+PDF export parameters:
+Resolution: 250 dpi
+Scale: 1:30,000,000
+W bound: -4310127.4201
+N bound: 1381335.1453
+E bound: 2357372.5867
+S bound: -3189039.8591
+output tiff: 2188 x 1401 pixels
+
+
+I then brought PDF into new Adobe Illustrator file and copied them to a new art board
+with 2188 x 1401 pixels dimensions.
+
+Adjusted size of the land + lakes layer and point locations layer by 275% so that
+scaled them to the art board.
+
+
+Created separate AK map in QGIS for export, then scaled by 150% in AI. I then copied a
+point from the contiguous US map to cover single AK point location to make points same size
+
+Created separate HI map in QGIS for export, then scaled by 200% in AI. I then copied a
+point from the contiguous US map to cover single HI point location to make points same size
+
+
+Made points 80% opacity, put 0.5 stroke for point outlines (same gray color
+as background), also moved some points a bit in the urban areas with lots of
+overlap to see some points better

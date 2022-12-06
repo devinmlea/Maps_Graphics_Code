@@ -1,0 +1,215 @@
+###########################################################
+###########################################################
+
+Line 5 History Map
+Author: Devin Lea
+
+Date project started: 10/11/2022
+Last updated: 10/26/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my lines map for #30DayMapChallenge
+
+I also wanted to make the map to better acquaint myself with the
+history of line 5 and the fight to shut it down
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were seven data sources I acquired, initally layered in QGIS in following order:
+1) Historical oil spills (.csv I created)
+2) Crude Oil Pipelines data (shapefile)
+3) National Forest Polygons (shapefile)
+4) Line 5 spill scenarios (shapefile I created)
+5) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+6) Natural Earth 50m lakes shapefile (shapefile)
+7) Natural Earth 50m land shapefile (shapefile)
+
+
+1) Historical oil spills (.csv I created)
+
+This is a .csv layer I created based on data provided at this website:
+https://www.arcgis.com/apps/View/index.html?appid=f817f5abad9a4cb09e942c1941fd0060
+It is also based on the first map from this webpage showing spills :
+https://www.sierraclub.org/wisconsin/line-5
+
+I created a new shapefile in QGIS to generate this point layer. I named the layer
+"Oil_Spill_Pts.shp". It has two fields: (1) id and (2) gallons. Gallons is the value
+of gallons spilled, which I entered manually after placing points along Line 5
+approximately where they match in the maps referenced in the above links
+
+
+2) Crude Oil Pipelines data
+
+Acquired shapefile from the US Energy Information Administration website link:
+https://www.eia.gov/maps/layer_info-m.php
+
+Selected Crude Oil Pipelines shapefile for download
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+I then used a select by attribute query to select only pipelines owned by the company
+Enbridge, and I used Export -> Save Selected Features As to export to a new shapefile
+named "Enbridge_pipes", which I then displayed instead of all pipelines
+Similarly, from Enbridge_pipes I selected Line 5 and used Export ->
+Save Selected Features As to export to a new shapefile named "Line5pipeline"
+
+I edited the line 5 line based on link to maps for the oil spills that showed more
+precise line location versus more approximate lines I downloaded
+
+
+3) National Forest polygons
+
+From the USDA Forest Service website I downloaded national dataset of National Forest polygons,
+with the file named "Administrative Forest Boundaries" from:
+https://data.fs.usda.gov/geodata/edw/datasets.php?dsetCategory=boundaries
+
+I downloaded this shapefile then imported it into QGIS
+
+
+4) Line 5 spill scenarios (shapefile I created)
+
+I created a new layer called Spill_Scenarios and digitized the area in Lake Michigan
+and Lake Huron that would kind of be a worse case scenario where oil could reach
+if a spill occurred in Mackinaw straights. My digitizing was an approximation of
+the area covered by a greater than 0% chance in Figure 12 from this report:
+https://graham.umich.edu/media/pubs/Mackinac-Line-5-Worst-Case-Spill-Scenarios.pdf
+
+
+5) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+6) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+7) Natural Earth 50m lakes shapefile
+
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+
+After prep in QGIS, my layers from top to bottom for my map were:
+1) Historical oil spills points (.csv I created)
+2) Line5pipeline (shapefile)
+3) Enbridge_pipes (shapefile)
+4) National Forest Polygons (shapefile)
+5) Line 5 spill scenarios (shapefile I created)
+6) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+7) Natural Earth 50m lakes shapefile (shapefile)
+8) Natural Earth 50m land shapefile (shapefile)
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in and edited the layers as described in the prior section
+
+Given the focus of my map is Michigan and surrounding states, I wanted a projected coordinate
+system with focus on MI, so I chose Lambert Conformal Conic NAD83/Michigan Central
+(EPSG: 26989), so I switched to this projection using Project Properties.
+
+For the Oil Spill points, I made it so size of point was based on the gallons of oil spilled.
+Only spills over 1000 gallons had a circle size greater than 0. The size categories were:
+1000-4200
+4200-96,600
+96,600-222,600
+222,600-285,600
+The color for these points was: R: 35, G: 35, B: 35
+
+For Line5pipeline, I made the stroke width 0.8, and color was R:0, G:0, B:0
+
+For Enbridge_pipes, I made the stroke width 0.3, and color was R:48, G:48, B:48
+
+For National Forest polygons, color was R:51, G:100, B:44, opacity = 75%
+
+For Spill_Scenarios polygon I used a hashed black / fill. Stroke width for fill
+was 0.36. Stroke for line was 0.3. Color for all was R:45, G:45, B:45
+
+For states 5m Cart Boundary, fill color was R:255, G:255, B:255, stroke color was
+R:168, G:168, B:168, stroke width = 0.26
+
+For 50m lakes layer, fill color was H:167, S:20, V:96, R:197, G:246, B:235,
+stroke color was R:168, G:168, B:168, stroke width = 0.26
+
+For 50m land layer, fill color was R:240, G:240, B:245, stroke color was
+R:168, G:168, B:168, stroke width = 0.26
+
+
+
+I then exported the map layers as a PDF using Project > Import/Export > Export Map to PDF
+PDF export parameters:
+Resolution: 250 dpi
+Scale: 1:7,000,000
+W bound: 4851143.9537
+N bound: 662435.5608
+E bound: 6406893.9553
+S bound: -333985.2735
+output tiff: 2188 x 1401 pixels
+
+
+
+
+I then brought PDFs into new Adobe Illustrator file and copied them to a new art board
+with 2188 x 1401 pixels dimensions.
+
+Adjusted size of the land + lakes layer and point locations layer by 275% so that
+scaled them to the art board.
+
+Edited Line 5 so stroke width = 4, other pipelines stroke = 1.
+
+I then adjusted coloring for layers. For oil spill points, I reduced them to 40%
+opacity. National Forest Land was reduced to 25% opacity. Lakes were reduced
+to 70% opacity.
+
+I manually put labels on for oil spill amounts and then crafted and added text
+to describe the map and a bit of Line 5 history.
