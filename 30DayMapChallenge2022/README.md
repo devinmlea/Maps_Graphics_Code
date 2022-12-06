@@ -1,6 +1,8 @@
 # 30DayMapChallenge 2022
 
-Here you can find all my #30DayMapChallenge creations for 2022.
+Below you can view all my #30DayMapChallenge creations for 2022.
+
+Interested in how I made a map? See the Project Notes folder, which contains detailed notes and any code (if relevent) used to make a map.
 
 What is the #30DayMapChallenge? See here: https://30daymapchallenge.com
 
