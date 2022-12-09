@@ -1,0 +1,202 @@
+###########################################################
+###########################################################
+
+COVID-19 Percent of MI Counties Sick Visualization Project
+Author: Devin Lea
+
+Date project started: 6/17/2022
+Last updated: 7/18/2022
+
+Licensing: The GIF generated using the accompanying R script
+is licensed by the author (Devin Lea) under a Creative Commons
+Attribution-Noncommercial-ShareAlike 3.0 (CC BY-NC-SA 3.0).
+What this means is you can take this map and reshare it or
+reproduce/remix it for noncommercial purposes, but please
+attribute me if you do so, and contact me if you wish to use
+your products for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+- Important notes
+
+Software used for this project:
+- Microsoft Excel
+- ArcGIS Pro
+- R/RStudio
+
+
+NOTE:
+The R code I generated to perfom the data modification and visualization and which I
+have made available on my website has been generalized so that if you would like to
+replicate this project, you may follow the steps in this project description to
+acquire the data and then visualize it using the accompanying R script, which I
+am happy to share upon request.
+
+###########################################################
+Project Goal
+###########################################################
+
+The goal of this project was to create a visualization of temporal data, so I decided to
+visualize the approximate percentage of people sick with COVID-19 over time in the state
+of Michigan per Michigan county.
+
+The full data available the day I began this project spanned the period of 03/14/2020
+until 06/15/2022, with the individual time step being everyday. The COVID daily data
+are still being updated, and daily data is usually available up to two days or so
+before the present date.
+
+Displaying the full amount of data would have created a large GIF, so I decided for
+display purposes to select only a six month window of this time for the GIF shown on
+my website.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project with a custom date range, you can follow the
+data acquisition + prep steps and then the data visualization steps in this file. If
+you contact me by email, I would be happy to share the accompanying R script to
+produce your visualization
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired and any quick preparations that were made to the data
+before the data were modified and visualized in R (see Data Modification and Visualization section
+for more information).
+
+There were three data sources I acquired:
+1) Daily COVID cases per Michigan county data (.xlsx)
+2) United States counties (shapefile)
+3) MI county population data (created .csv file)
+
+
+1) Daily COVID cases per Michigan county data
+
+I acquired the daily COVID cases data per Michigan county from the Michigan.gov website here:
+https://www.michigan.gov/coronavirus/stats
+
+On this website there are several public use datasets that are being maintained and are
+downloadable as .xlsx files. I downloaded from the link named "Cases and Deaths by County
+by Date of Onset of Symptoms and Date of Death", which gives you a file with a similar
+name as well as last date of update (in my case, 2022-06-15).
+
+The downloaded .xlsx file has two tabs. There are eight columns on the first tab which
+contains the data (COUNTY, Date, CASE_STATUS, Cases, Deaths, Cases.Cumulative,
+Deaths.Cumulative, Updated). The second tab is a readme how data is collected and classified.
+
+Since I was only interested in the first four columns for my project, I copied all rows
+for the first four columns in the data tab to a new Microsoft Excel document. I then saved this
+data with a new name and as a .csv file: "MIDailyCOVIDCases.csv"
+
+
+2) United States counties shapefile
+
+To show Michigan counties, I first obtained the 2018 cartographic boundary shapefile from US Census
+Bureau of US Counties (cb_2018_us_county_500k). After unzipping, I opened the shapefile in ArcPro.
+I used selected by attribute to select only Michigan counties and exported these to a new shapefile
+I named "MI_Counties".
+
+The Daily COVID cases per Michigan county data contained daily data for incarcerated people in
+Michigan Department of Corrections (MDOC) and Federal Correction Institutions (FCI). I decided to
+depict these populations along with the county populations. To do this, I added two polygons using
+ArcPro in the area of Lake Superior and provided appropriate name attributes (MDOC and FCI) for these
+two new polygons in the "MI_Counties" attribute table.
+
+NOTE: I also manually changed "St. Clair" and "St. Joseph" to "St Clair" and St Joseph" in
+the shapefile attribute table so the names would match the county names from the daily COVID data
+
+
+3) MI county population data
+
+I obtained MI county populations from link: https://www.michigan-demographics.com/counties_by_population
+These population numbers were from 2020 American Community Survey. I copied them to a new Microsoft Excel
+file and saved the file as a .csv named "MICountyPop.csv". 
+
+The county names when I copied them were originally like "Alcona County", but I just wanted
+the county name without the "County" part, so I then created an equation like below in a new column:
+=LEFT(A2,FIND(" ",A2)-1)
+Where A2 was "Alcona County" or equivalent cell. I used this to just get the county name, which I
+then copied and saved values of over the original names and then deleted the equations.
+
+NOTE: I also manually changed "St. Clair" and "St. Joseph" to "St Clair" and St Joseph" in the
+county name  column of the .csv file so the names would match the county names from the daily COVID data
+
+Finally, I added population values for FCI and MDOC to the csv file in Excel.
+
+For FCI (Federal Correction Institution(s)), I determined there is only one FCI in Michigan, which
+the website below says houses 1,313 inmates. I use this number for population.
+https://prisonerresource.com/federal-bureau-prisons/michigan/
+
+For MDOC (Michigan Department of Corrections), the website below notes that at the end of 2019
+there were 38,053 people in MDOC facilities, while in January 2021 the number was 33,635, as no
+census was taken between this time. I decided to take the average of these two numbers (35,844)
+as my population for MDOC.
+https://www.safeandjustmi.org/2021/03/25/the-michigan-department-of-corrections-by-the-numbers/
+
+
+###########################################################
+Data Modification and Visualization
+###########################################################
+
+Once the data were acquired and prepared, I wrote and ran an .R script named "MICovidDataVis.R"
+that brought these data into its workspace, modified the data into the form I wanted, and then
+combined daily data into a GIF visualization.
+
+See MICovidDataVis.R for details of steps for data modification and visualization performed.
+In summary, here are the primary steps that the script performs:
+1) Read in MIDailyCOVIDCases.csv data
+2) Aggregate confirmed and probable cases by County + Date
+3) Calculate the rolling sum of COVID-19 over the past 14 days, set NA if prior 14 days not available
+4) Remove NAs from data frame
+5) Remove where COUNTY column = "Out-of-State" or "Unknown"
+6) Create new data frame and combine rolling sum for Wayne County and Detroit
+7) Delete old data where COUNTY column = "Detroit City" or "Wayne" and append new combined rolling
+sum for Wayne County
+8) Read in population data for MI counties, merge with Number of Sick dataframe, then calculate
+Percent of Sick people
+9) Read in MI_Counties polygon layer
+10) Select date range for visualization
+11) Join Pct Sick data to county polygons, define data breaks, then create GIF animation
+
+For more information about the parameters you will need to set when using the R script, see
+the "MICovidDataVis.R" file where I have provided more documentation
+
+
+###########################################################
+Important Notes
+###########################################################
+
+To determine what I call the "approximate number of people presently positive with COVID-19",
+I assume that a person is positive for 2 weeks (14 days) after they have a confirmed or probable
+case listed. I realize this is not likely accurate (people could have been positive for days
+before testing, some people are positive/sick for longer than this time, and this metric doesn't
+try to account for mortality from COVID-19 or issues of long covid), but I for simplicity wanted
+a simple metric to just try to generally visualize the relative percentage of people sick per
+each Michigan county.
+
+
+When using all data
+Ranges for graduated colors using Natural Breaks (Jenks)
+0 - 0.249514
+0.249515 - 0.573779
+0.573780 - 1.058687
+1.058688 - 1.850771
+1.850772 - +
+
+My adjusted custom values taking into account Jenks values:
+0 - 0.249999
+0.250000 - 0.499999
+0.500000 - 0.999999
+1.000000 - 1.999999
+2.000000 - +
+
+
+
+
