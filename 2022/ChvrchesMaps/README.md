@@ -1,5 +1,7 @@
 ### Chvrches Maps
 
+In July 2022 I made a trio of maps to show the places and number of shows the band Chvrches played over their first decade.
+
 ![ChvrchesNAConcerts-01](https://user-images.githubusercontent.com/119870562/206744105-b84d999c-c666-4ced-b17e-ca97e894f4a5.jpg)
 
 ![ChvrchesPacific-01](https://user-images.githubusercontent.com/119870562/206744283-7f01db1e-8c66-46cd-bcfd-6657ab98b9e6.jpg)
