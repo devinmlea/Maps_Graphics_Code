@@ -1,0 +1,303 @@
+###########################################################
+###########################################################
+
+Chvrches: A decade of Chvrches North American Concerts (2013-2022)
+Author: Devin Lea
+
+Date project started: 7/7/2022
+Last updated: 7/14/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Paint
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator + Photoshop
+
+
+###########################################################
+Project Goal
+###########################################################
+
+The inspiration for this map was spurred from a tweet by band member Lauren Mayberry
+on 7/6/2022 noting that a decade prior on July 5, 2012 had been the first proper
+Chvrches show in Glasgow. I was curious to see that now we've had Chvrches playing
+shows for a decade where Chvrches have played since their beginning.
+
+After looking at the archive of where Chvrches has played over time using
+concertarchives.org, I decided to focus just on their shows in North America rather
+than a global focus because I was afraid it would be too difficult to see places that
+have only been played once or twice at the global scale, as well as that some places
+like the US and UK would have just a bunch of overlapping circles at that scale and it
+would be too hard to determine locations.
+
+For design purposes, I wanted to capture what felt like a Chvrches classic aesthetic,
+so I decided the color scheme for the map should be based on colors from their first
+album, The Bones of What You Believe.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+1) Chvrches concert data (created .csv file)
+2) Natural Earth 50m land shapefile (shapefile)
+3) Natural Earth 50m lakes shapefile (shapefile)
+
+1) Chvrches concert data
+
+I went to the link below:
+https://www.concertarchives.org/bands/chvrches
+and from oldest to present went through all Chvrches recorded concerts. On
+a new spreadsheet in Microsoft Excel I recorded data in five columns. From
+left to right, those columns (+ description) were:
+A) Band (band name; this was always "Chvrches")
+B) Date (the date of the concert)
+C) Venue (venue name)
+D) OrigLocation (The original city name, state/province name, country name from the website)
+E) UpLocation (updated city name, state/province name, country name)
+
+The reason for the difference between the original location versus updated location was that
+for display purposes I changed/aggregated the names of certain locations so to make a less
+cluttered map. For example, I aggregated a number of cities in the Los Angeles metropolitan
+area all into "Los Angeles" to simplify the display and understanding of the map, as it would
+be too cluttered trying to display and label each individual city in the LA Metro area at the
+North American continental scale.
+
+All modifications I made from original listed location --> updated location:
+San Francisco, CA, USA  -->  Bay Area, CA, USA
+Oakland, CA, USA  -->  Bay Area, CA, USA
+Napa, CA, USA  -->  Bay Area, CA, USA
+Glen Ellen, CA, USA  -->  Bay Area, CA, USA
+Pomona, CA, USA  -->  Los Angeles, CA, USA
+Ventura, CA, USA  -->  Los Angeles, CA, USA
+Hollywood, CA, USA  -->  Los Angeles, CA, USA
+Santa Ana, CA, USA  -->  Los Angeles, CA, USA
+Long Beach, CA, USA  -->  Los Angeles, CA, USA
+Inglewood, CA, USA  -->  Los Angeles, CA, USA
+Indio, CA, USA  -->  Palm Springs, CA, USA
+Pioneertown, CA, USA  -->  Palm Springs, CA, USA
+Dallas, TX, USA  -->  Dallas-Ft. Worth, TX, USA
+Ft. Worth, TX, USA  -->  Dallas-Ft. Worth, TX, USA
+Frisco, TX, USA  -->  Dallas-Ft. Worth, TX, USA
+Minneapolis, MN, USA  --> Minneapolis-St. Paul, MN, USA
+St. Paul, MN, USA  --> Minneapolis-St. Paul, MN, USA
+Tampa, FL, USA  -->  Tampa-St. Petersburg, FL, USA
+St. Petersburg, FL, USA  -->  Tampa-St. Petersburg, FL, USA
+Lake Buena Vista, FL, USA  -->  Orlando, FL, USA
+Overland Park, KS, USA  -->  Kansas City, KS, USA
+Bonner Springs, KS, USA  -->  Kansas City, KS, USA
+Kansas City, MO, USA  -->  Kansas City, KS, USA
+Rochester Hills, MI, USA  -->  Detroit, MI, USA
+Royal Oak, MI, USA  -->  Detroit, MI, USA
+Rosemont, IL, USA  -->  Chicago, IL, USA
+Columbia, MD, USA  -->  Baltimore, MD, USA
+Covington, KY, USA  -->  Cincinnati, OH, USA
+Newport, KY, USA  -->  Cincinnati, OH, USA
+Miami Beach, FL, USA  -->  Miami, FL, USA
+Camden, NJ, USA  -->  Philadelphia, PA, USA
+Mesa, AZ, USA  -->  Phoenix, AZ, USA
+Tempe, AZ, USA  -->  Phoenix, AZ, USA
+Spokane, WA, USA  -->  George, WA, USA (the 5/27/13 concert was in George, not Spokane)
+
+
+2) Natural Earth 50m land shapefile
+
+Downloaded 1:50m scale land shapefile of Earth landmasses from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove Carribean islands so I would be able to have clear space for labels
+for Miami and Ft. Lauderdale and other text I eventually would place in this area.
+
+
+3) Natural Earth 50m lakes shapefile
+
+Downloaded 1:50m scale lakes shapefile of Earth lakes from Natural Earth Data at link:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-lakes-reservoirs/
+
+After downloading the lakes and unzipping the file, I opened the unzipped file in QGIS
+and edited to remove most of the lakes. I selected the lakes (below) to keep, then
+inverted the selection and deleted all the other lakes.
+Lakes to keep:
+Lake Erie, Lake Ontario, Lake Michigan, Lake Superior, Lake Huron, Great Salt Lake
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the land polygons, lakes polygons, and concert
+locations csv as points.
+
+Given the extent of my data (USA, Mexico, Canada), I wanted a projected coordinate
+system and decided on using North America Lambert Conformal Conic (ESRI: 102009),
+so I switched to this projection using Project Properties.
+
+Next, I wanted to display the concert locations as graduated symbols, where size is
+based on the number of concerts. To do this, for the points layer under Properties ->
+Symbology, I changed the type from "Single Symbol" to "Graduated". Then for Value
+I selected the 'Concerts' attribute. Next, for Method I changed from "Color" to
+"Size". I also changed 'Size from' parameters to 1.5 (min) to 10 (max), with units
+in millimeters. The mode for class breaks I first set using Natural Breaks, but
+manually made some changes. I ended up using 8 classes for a balance between
+being continous and each unit adding size but also being able to see different
+sizes between data. The concert values for each class are:
+1-1
+2-3
+4-6
+7-9
+10-11
+12-18
+19-22
+23-25
+
+I then set colors for each layer. I wanted to use colors from the album cover of
+The Bones of What You Believe, so I downloaded an example image and color sampled
+the red, blue, and gray/beige using Paint software. I also used a black color from
+QGIS. The R,G,B numbers are below for each display color
+Red: R: 191, G: 36, B: 50;
+Blue: R: 36, G: 119, B: 213
+Black: R: 5, G: 5, B: 5
+Beige: R: 203, G: 198, B: 168
+
+I set land as Black, location points as Blue, and lakes as red. The background
+once I go to Adobe Illustrator I will also set the same red color. The beige will be
+used for text and labels in Adobe Illustrator.
+
+I then exported the land and lakes as a PDF using Project > Import/Export > Export Map to PDF
+PDF export parameters:
+Resolution: 250 dpi
+Scale: 1:32,500,000
+W bound: -2624224
+N bound: 1654334
+E bound: 2569546
+S bound: -2464567
+output tiff: 1571 x 1246 pixels
+
+I also exported the graduated points as a PDF using Project > Import/Export > Export Map to PDF
+TIFF export parameters:
+Resolution: 250 dpi
+Scale: 1:32,500,000
+W bound: -2624224
+N bound: 1654334
+E bound: 2569546
+S bound: -2464567
+output tiff: 1570 x 1245 pixels
+
+
+I then brought PDFs into new Adobe Illustrator file and copied them to a new art board
+with 1571 x 1246 pixels dimensions.
+
+Adjusted size of the land + lakes layer and point locations layer by 292% so that
+scaled them to the art board.
+
+I ended up at the end of the map with six layers, which from top to bottom were:
+- Title + Legend
+- Text + Callouts
+- Point Locations
+- Masks
+- Land + Lakes
+- Background
+
+Added new layer (Background) and created a rectangle to cover the whole artboard.
+I then made this rectangle fill color matching the red noted above. I was using CMYK
+color so the conversion color settings for the red color were:
+C: 0
+M: 81
+Y: 74
+K: 25
+
+I also made the Masks layer and added smaller rectangles to cover up islands away
+from North American landmass that were distracting
+
+Adjusted positionality of points in the Points Location layer so that biggest circles
+were lower position in the layer so that smaller circles that might overlap would
+show above the larger circles
+
+I then changed fill color for all circle outlines to white, and I changed the opacity of all
+circles from 100 to 90%
+
+The website below suggests the fonts that are used on the album cover of The Bones of What
+You Believe:
+https://fontmeme.com/the-bones-of-what-you-believe-font/
+It suggests that Baskerville-Italic is the font used for the album title, but this font
+was not available on my computer.
+I acquired Baskerville-Italic font from this website:
+https://fontsgeek.com/fonts/Baskerville-Italic
+I unzipped and copied the font file onto computer path: C:\Windows\Fonts
+Then when re-opening Adobe Illustrator I could access and use the font.
+
+The font color I wanted to be the same as the text on The Bones of What You Believe
+cover. Converted beige values from RGB to CMYK were:
+C: 0
+M: 2
+Y: 17
+K: 20
+
+I added the Text layer and used Baskerville-Italic font for all place naming and all
+text except for Chvrches band name as part of title. Font size for location lables
+was 16, all text on multiple lines were changed to have 18 leading value. I also added
+callouts (lines connecting name and point) where necessary. These "lines" were rectangles
+added with the rectangle tool. Some of the labels I put in bottom right corner with full
+description because I could not fit them on the map; I used reference letters (A, B, C...)
+on the map to help guide the viewer to the matching label.
+
+The fontsgeek website notes that the title font was likely based on Journal Sans.
+So I downloaded Journal Sans font from following website:
+https://fontsov.com/download-fonts/journalsans10852.html
+I unzipped and copied the font file onto computer path: C:\Windows\Fonts
+Then when re-opening Adobe Illustrator I could access and use the font.
+I added the Title layer and used this font for the band name as part of my title.
+The title color was the same beige as other text. To try and replicate the signature
+E in Chvrches band name I used red and beige rectangles to emphasize or get rid of
+parts of the E. I also added a separate point as a legend to note that the circles
+denote Place, state/country, and number of shows.
+
+Adjustments I made to individual points to aid viewing:
+Squamish, Canada - 1 bump up (north) to better differentiate from Vancouver
+Orlando, FL - 1 bump right (east) to get closer to Atlantic Ocean and label
+Ft. Lauderdale, FL - 2 bumps up (north) to differntiate from Miami
+Sacramento, CA - 3 bumps right (east) to differ from Bay Area
+Boulder, CO - 2 bumps down (south) to show diff from Denver
+Providence, RI - 3 bumps down (south) to differ from Boston
+Baltimore, MD - 1 bump left (west) and 2 up (north) to differ from DC metro
+Durham, NC - 3 bumps left (west) to differ from Raleigh
+Pittsburgh, PA - 3 bumps down (south) to give space for label name
+Charlotte, NC - 3 bumps left (west) to give space for label name
+
+Once all this was completed, I exported the map as a .JPEG and .PDF to be able
+to show my product.
+
+#########################################################
+
+Notes/Limitations:
+- The map depicts number of shows (so, if Chvrches plays 2x for Coachella, thats 2x in Palm Springs)
+- This list goes by website I consulted. It doesn't necessarily list all performances that might
+have been private/smaller sessions. I consulted other websites for past tour lists, deleted where
+I thought duplicates existed and could verify using other concert lists.
