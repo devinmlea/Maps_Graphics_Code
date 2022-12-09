@@ -1,0 +1,262 @@
+###########################################################
+###########################################################
+
+46th DALMAC (summer 2017) map
+Author: Devin Lea
+
+Date project started: February 2022
+Map completed: March 2022
+Details file last updated: 7/27/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Photoshop
+- Python
+- Microsoft Excel
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+The goal was just to map something different and that I found interesting after
+recently finishing my dissertation. I ended up coming across the DALMAC route
+data and coming up with this idea based on that the 2017 route data were
+openly available from ridewithgps.com
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+
+1) GMTED2010N30W090 from USGS Earth Explorer (TIF)
+2) Route data .kml files (.kml)
+3) Route data elevation profiles (.csv file I created)
+
+
+1) GMTED2010N30W090 from USGS Earth Explorer (TIF)
+
+I decided that the background of the map I wanted to use topographic data
+and have a shaded relief and hypsometric tint. So, I created a USGS account
+so that I could download data from USGS Earth Explorer. On Earth Explorer I
+decided to choose the GMTED2010 product, specifically using GMTED2010N30W090
+which included Michigan and surrounding area of interest. I downloaded the
+7.5 arcsecond product.
+
+I then loaded the full 7.5 arcsecond product into QGIS and used the QGIS
+tool "Clip Raster by Extent" to clip the raster down using the following bounds:
+-87.5,-81.7,39.9,47.4 [EPSG:4326]
+The resulting raster was saved as 'Michigan_clip'
+* I learned how to do this using this link:
+http://www.qgistutorials.com/en/docs/3/working_with_terrain.html
+
+After the clip, there was a patch up in Lake Superior with 0 values compared to
+elevations around it. I decided to make this 'null patch' same values as surrounding
+values in the lake (179), so I used "Raster Calculator" tool (under raster analysis tools)
+to change all 0 values to 179. The expression I used to do this was:
+("Michigan_clip@1" = 0) * ("Michigan_clip@1" + 179) + ("Michigan_clip@1" != 0) * "Michigan_clip@1"
+The new raster output name was 'Michigan_clip_update'
+* I based my expression based on description at the link below:
+https://gis.stackexchange.com/questions/385763/qgis-raster-calculator-if-statement/385899#385899
+
+I then used the 'Michigan_clip_update' layer to make a hypsometric tint. To do this, I went to
+Properties > Symbology, then changed render type to singleband pseudocolor. I then on the color
+ramp selection I selected Create New Color Ramp. The colors for the custom color ramp are listed
+below from left to right on ramp (4 total colors; so there are 2 breaks added)
+
+Color one (Dark green)
+H: 126
+S: 96%
+V: 44%
+R: 5
+G: 111
+B: 15
+
+Color two (mid green)
+relative position: 25.0%
+H: 106
+S: 69%
+V: 75%
+R: 90
+G: 190
+B: 60
+
+Color three (light green)
+relative position: 60.0%
+H: 95
+S: 82%
+V: 92%
+R: 119
+G: 234
+B: 42
+
+Color four (tan)
+H: 62
+S: 54
+V: 94
+R: 235
+G: 239
+B: 110
+
+I then exported the hypsometric tint as a TIFF file using
+Project > Import/Export > Export Map to Image
+
+Hypsometric tint TIFF export parameters:
+Resolution: 250 dpi
+Scale: see note below
+W bound: -88.241407904
+N bound:47.132914831
+E bound:-80.801552800
+S bound:39.589368367
+output tiff: 1492 x 1513 pixels
+* Note on scale: somehow my scale got erased from this document so I don't have the exact
+number I used. It was about 1:2600000 ballpark I think. I would go back and just re-do, but
+I don't want to have to change scale for route data and then have to re-export and take several
+days re-editing the routes so they don't overlap.
+
+I then used the 'Michigan_clip_update' layer to create a hillshade layer. To do so, I used 
+Hillshade tool as part of GDAL tools. I used following input parameters:
+Z factor: 1
+Sacel:1
+Azimuth: 315
+Altitude: 75
+The output layer was saved with name 'Michigan_clip_update_hillshade75'
+
+I then exported the hillshade as a TIFF file using Project > Import/Export > Export Map to Image
+Hillsahde TIFF export parameters:
+Resolution: 250 dpi
+Scale: see note below
+W bound: -88.241407904
+N bound:47.132914831
+E bound:-80.801552800
+S bound:39.589368367
+output tiff: 1485 x 1503 pixels
+* Note on scale: somehow my scale got erased from this document so I don't have the exact
+number I used. It was about 1:2600000 ballpark I think. I would go back and just re-do, but
+I don't want to have to change scale for route data and then have to re-export and take several
+days re-editing the routes so they don't overlap.
+
+2) Route data .kml files (.kml)
+
+I was able to obtain 2017 route data from the website link below:
+https://ridewithgps.com/organizations/108-tri-county-bicycle-association/routes?
+
+This site had all the major routes from 2017 and some other years that the Tri-county
+bike association has uploaded on the site (originally was going to do 2021 since it
+was 50th year, but that data is locked so I used 2017 since route data is open to
+download). All the daily route data I was able to download as .kml files, which
+I could read into and display in QGIS.
+
+I decided to show four of the main DALMAC routes on my map: 5-day west, 4-day west,
+4-day west century, and 5-day east. For each of these, I downloaded each relevant
+daily route .kml files and brought them into QGIS. For each route, I displayed
+all the .kml files and used Project > Import/Export > Export Map to PDF and saved
+each set of routes as a PDF. I used the same export parameters as listed above for the
+hypsometric tint and hillshade layers
+
+
+3) Route data elevation profiles (.csv file I created)
+
+Each route on the ridewithgps site also had an elevation profile and elevation gain
+and loss. It took several days, but I ended up manually copying elevations at each
+point along the elevation profiles for each route to construct a full elevation profile
+for each day + route (in future, could also try to extract elevation profile from DEM).
+However, the intervals of recording were not evenly spaced (at minimum they were at 0.1
+mile intervals, but there was not an elevation at every 0.1 mile, so some days had more
+data points than others, even if they were shorter distance). When I used excel area
+graph, it assumed equal spacing of intervals. So, I wanted to interpolate between points
+to get data with every 0.1 mile, so I wrote and ran a python script called
+'Create_interpolated_elevations.py' that interpolated elevations between locations more
+than every 0.1 mi apart using the route data in csvs for each of the four routes. This
+code didn't do everything perfectly, so I had to make some manual changes to finalize
+the elevations for each of the routes.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Having both hillshade and hypsometric tint TIFF layers, I opened both in Adobe Photoshop
+and also created a new file with dimensions 1492 (w) x 1513 (h) pixels. I then did following steps:
+1) changed opacity of hypsometric tint to 50%
+2) changed blending of hillshade layer using 'difference' blending
+3) changed blending of hypsometric tint using 'color burn' blending
+4) Increased vibrance + 100
+
+I then saved the combined tint + hillshade as a new TIFF named 'Michigan_tint_hillshade_combined'
+
+
+I then used Adobe Illustrator. First, I created a new document and brought in the
+'Michigan_tint_hillshade_combined' TIFF layer. I saved this as an .ai file named
+'Michigan_2017_DALMAC_final_map'. I then opened each route PDF and copied in each route
+to the .ai file. 
+
+Because the routes had overlap in places, I then took a few days to manually edit
+vertices for the lines so they no longer overlapped each other or features of interests
+
+Once I completed editing the routes, I added name labels for all the start and stop locations
+for each route, as well as color coded symbols for each of the stops.
+
+I then created area graphs for elevation in Microsoft Excel for each of the elevation profile
+csvs. Below I list the dimensions of the graphs I copied from Excel and their altered and
+scaled dimensions in Adobe Illustrator.
+
+4WC (404.6 mi)
+In Excel: H: 1.78, W: 5.32
+White Box (original in AI): H: 128.16, W: 383.04
+area graph (original): H: 106.8008, W: 361.799
+Graph (altered): H: 15, W: 311.3387
+
+5W (319.8 mi; 0.7904 ratio to 4WC)
+W: 4.20 in Excel
+expanded graph W: (311.3387 * 0.7904) = 246.082
+
+4W (318.2 mi; 0.7864 ratio to 4WC)
+W: 4.18 in Excel
+expanded graph W: (311.3387 * 0.7864) = 244.8367
+
+5E (283.7 mi; 0.7011 ratio to 4WC)
+3.73 in Excel
+expanded graph W: (311.3387 * 0.7011) = 218.279
+
+Once the graphs were set in place, I changed the opacity to 75% for graphs. I then added
+location and distance labels and markers. I also added a gray partially transparent background
+behind the graphs to help it stand out from the main map area.
+
+I then added title for the map as well as another gray partially transparent background
+
+I then added elements for the legend. For the topography, I ended up taking screen shots of the
+color ramp for the hypometric tint and hillshade in QGIS, then brining those jpgs into Adobe
+Photoshop and applying the same blending and editing steps I did for the combined hypsometric
+tint and hillshade layer. I then saved this as topo_legend.tif and then opened and copied
+to my Adobe Illustrator file.
+
+Finally, I added relevant text to label and describe the map
