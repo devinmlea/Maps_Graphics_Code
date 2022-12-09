@@ -1,0 +1,133 @@
+###########################################################
+###########################################################
+
+Star Wars Movie Locations Map
+Author: Devin Lea
+
+Date project started: 5/4/2022
+Last updated: 7/14/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator + Photoshop
+
+###########################################################
+Project Goal
+###########################################################
+
+This was a just for fun map I created on "Star Wars Day" 2022 to show all places on Earth
+that have been used for Star Wars worlds in all the various Star Wars movies. The map
+only includes outdoor places used for the outdoor world scenes of the movies, and does
+not include any sets or studios where parts of movies may also have been filmed.
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this map, please follow the steps described in
+the sections below
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were three data sources I acquired:
+1) Star Wars movie locations (created .csv file)
+2) Natural Earth 50m land shapefile (shapefile)
+3) Image of star field for background
+
+1) Star Wars movie locations
+
+Obtained movie locations from:
+https://en.wikipedia.org/wiki/List_of_Star_Wars_filming_locations
+and recorded data in six colums in Microsoft Excel or equivalent spreadsheet
+program, which from left to right were:
+A) Location (on Earth; e.g., London)
+B) Country (e.g., United Kingdom)
+C) Latitude of location
+D) Longitude of location
+E) Movie(s)
+F) Star wars setting (e.g., Yavin 4)
+
+Specifically to get Latitude and Longitude values for the spreadsheet I used
+Google geocoding API.
+Saved data in .csv file named: 'StarWarsFilmLocations.csv'
+
+
+2) Natural Earth 50m land shapefile (shapefile)
+
+Downloaded 1:50 million scale land polygons from Natural Earth Data
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/
+
+
+3) Star field image
+
+I wanted a star field background for the map, so I used the following image I downloaded via Wikimedia:
+https://commons.wikimedia.org/wiki/File:2021-02-13_-_Sterne_von_Klein_Flintbek_aus_(3).jpg
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Opened QGIS and loaded in land polygons and movie locations csv as points layer
+
+Changed map projection to Robinson Projection (ESRI: 54030)
+
+For colors of points, I tried to match original vintage colors from A New Hope credits
+
+Changed colors for land polygons
+Fill: #8daec4 (blue gray)
+Stroke: #10d1ff (light blue)
+Stroke width: 0.35 mm
+
+https://brandpalettes.com/star-wars-logo-colors/
+For yellow color: #FFE81F
+I used this yellow color for the point locations
+
+I deleted Antarctica and some islands in polar antarctic circle from land polygons to
+make map cleaner
+
+I then exported the land polygons and points as two separate PDF layers named:
+StarWars_Land
+StarWars_Points
+
+I used the values 17700000 for N,E, and -17700000 for S,W as export parameters
+
+
+I then opened new Adobe Illustrator (AI) file and the exported land and points pdfs in AI.
+I copied pdfs as new layers into the AI file and then scaled them by 375 % to increase
+their size to match the artboard.
+
+I created a new Background layer and opened the downloaded star field image and copied
+it to my AI file under the background layer behind my other map layers.
+
+Then I added text. I wanted the title of the map to match star wars fonts, so I downloaded
+the font type called Star Jedi from https://www.starwarsfont.com/. I then copied the TrueType
+file type into my fonts folder on my computer so I could access it in AI. For details how to do
+this, see link:
+https://www.wikihow.com/Add-Fonts-to-Illustrator
+
+The font I used for the places was Franklin Gothic Medium Cond, which according to link below is
+a close match to font used in credits for Star Wars: A New Hope
+https://office-watch.com/2021/star-wars-movie-opening-and-end-credits-in-powerpoint/
+
+Once I had all my labels, I exported the map to .JPEG and .PDF file types to display
