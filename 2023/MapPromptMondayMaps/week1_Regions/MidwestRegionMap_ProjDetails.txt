@@ -1,0 +1,259 @@
+###########################################################
+###########################################################
+
+Where is the Midwest United States Region Map
+Author: Devin Lea
+
+Date project started: 1/2/2023
+Last updated: 1/4/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Paint
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator + Photoshop
+
+
+###########################################################
+Project Goal
+###########################################################
+
+First goal was to make map for 2023 week 1 Region(s) for
+#MapPromptMonday
+
+I also wanted to make a map that would help me investigate
+the complexities of defining regions, and doing it for the
+United States region I grew up in and recently returned to
+felt like a fun challenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were several data sources I acquired:
+1) US Census Bureau states (shapefile)
+2) US Census Bureau counties (shapefile)
+3) Dialect Regions (shapefile I created)
+4) USDA National Agricultural Statistics Service Corn and Soybeans bushels by US county (csv I created)
+5) US Physiographic Data (shapefile)
+6) YouGov Where is the Midwest survey data 
+
+
+
+
+
+
+1) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+I obtained 1:5m Cartographic Boundary Shapefile of state polygons from
+US Census Bureau at:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+2) US Census Bureau 5m Counties Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+3) Dialect Regions (shapefile I created)
+
+Map from Rick Aschmann at:
+https://aschmann.net/AmEng/
+I used this map to digitize a polygon of what I defined as the Midwest
+Dialect Region
+
+
+4) USDA National Agricultural Statistics Service Corn and Soybeans bushels by US county (csv I created)
+
+Acquired the data from:
+https://www.nass.usda.gov/Quick_Stats/Lite/index.php
+
+Selections
+Sector -> CROPS
+Group -> FIELD CROPS
+Commodity -> CORN OR SOYBEANS
+View -> Acreage, Yield, Production and Price
+Year -> 2021
+Geographic Level -> COUNTY
+Choose each state, then copy data to csv files
+
+I created one csv with all states for Corn and a second for Soybeans
+
+
+5) US Physiographic Data (shapefile)
+
+Downloaded data from:
+https://water.usgs.gov/GIS/metadata/usgswrd/XML/physio.xml#stdorder
+
+
+6) YouGov Where is the Midwest survey data 
+
+Data from https://today.yougov.com/topics/society/articles-reports/2022/08/31/drawing-midwest-map-what-states-americans-think
+I used the last main graph percentage numbers of Midwesterners
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+The final map was made up of six primary data layers:
+1) US Census Defined Midwest Region states
+2) Midwest Dialect Region
+3) Corn Harvest in Bushels by US County (2021)
+4) Soybean Harvest in Bushels by US County (2021)
+5) Interior Plains physiographic region
+6) Self-Defined by People claiming to live in the Midwest
+
+Most of the work was done in Microsoft Excel and QGIS, with just
+a few final details added in Adobe Illustrator at the end
+
+The coloring for each layer if defined in Midwest was based on the
+color #bf31bf, then set to varying weighted opacity. The maximum
+opacity for each layer is as follows:
+Census Region = 15% for in, 0% for out
+Dialect Region = 20% for in, 0% for out
+Corn Harvest - set by bushels value, see section
+Soybean Harvest - set by bushels value, see section
+Interior Plains = 15% for in, 0% for out
+Self-Defined -  set by value, see section
+
+Background color for states not in Midwest for each layer was #ebebeb
+
+
+Here is how I prepared each layer:
+
+1) US Census Bureau states in Midwest Region
+
+I opened the US Census Bureau state layer in QGIS, and I selected
+all states defined to be in the Midwest Region by US Census Bureau
+and then saved them to their own layer. These states were:
+Ohio, Michigan, Indiana, Illinois, Wisconsin, Missouri, Iowa,
+Minnesota, North Dakota, South Dakota, Nebraska, and Kansas.
+
+2) Midwest Dialect Region
+
+I used the dialects map from Rick Aschmann at:
+https://aschmann.net/AmEng/
+as a guide, and I digitized an polygon that encompassed North Central,
+The North, and West Midlands, Central Midlands and Allegheny Midlands
+(but not East Midlands)
+
+3) Corn Harvest in Bushels by US County (2021)
+
+I first had to create new columns for State and County names to their
+own separate columns using following criteria:
+To Get County Name
+=RIGHT(B2,(LEN(B2)-SEARCH(",",B2,SEARCH(",",B2)+1)-1))
+To Get State Name
+=LEFT(B2,SEARCH(",",B2)-1)
+
+I used this to then determine FIPS codes for each county and these
+were added to a new column
+
+I took the csv of Corn Harvest data by US county I created and brought
+it in to QGIS along with the US Census Bureau counties shapefile, joining
+the data together by FIPS code and displaying the data in graduated symbols
+by number of bushels of corn. The divisions were as follows:
+5 million bushels or less (background color)
+5-10 million bushels (3% opacity)
+10-15 million bushels (9% opacity)
+15-20 million bushels (12% opacity)
+20 milion bushels or more (15% opacity)
+
+4) Soybean Harvest in Bushels by US County (2021)
+
+I first had to create new columns for State and County names to their
+own separate columns using following criteria:
+To Get County Name
+=RIGHT(B2,(LEN(B2)-SEARCH(",",B2,SEARCH(",",B2)+1)-1))
+To Get State Name
+=LEFT(B2,SEARCH(",",B2)-1)
+
+I used this to then determine FIPS codes for each county and these
+were added to a new column
+
+I took the csv of Corn Harvest data by US county I created and brought
+it in to QGIS along with the US Census Bureau counties shapefile, joining
+the data together by FIPS code and displaying the data in graduated symbols
+by number of bushels of corn. The divisions were as follows:
+5 million bushels or less (background color)
+5-10 million bushels (5% opacity)
+10-15 million bushels (10% opacity)
+15 milion bushels or more (15% opacity)
+
+5) Interior Plains physiographic region
+
+After opening the layer in QGIS, I used select by attributes to select
+"DIVISION" = 'INTERIOR PLAINS' and saved selected polygons to new
+layer
+
+6) Self-Defined by People claiming to live in the Midwest
+Opened a new US Census Bureau state polygon layer and used the percentage
+of people who identified themselves as Midwesterners who said a state was
+in the Midwest. For example, the highest score was 81% for Illinos, lowest
+was 24% for Pennsylvania.
+
+I set the layer so the color of each state could be set individually. All non-
+Midwest states had same background color, all states in the survey were given
+the standard color, then percent opacity was set based on scaling of scoring
+below. (For example, Illinois was 20% opacity, Pennsylvania 1% opacity)
+
+81 (round to 80) = 20%
+77 = 19%
+74 = 18%
+71 = 17%
+68 = 16%
+65 = 15%
+62 = 14%
+59 = 13%
+56 = 12%
+53 = 11%
+50 = 10%
+47 = 9%
+44 = 8%
+41 = 7%
+38 = 6%
+35 = 5%
+32 = 4%
+29 = 3%
+26 = 2%
+23 = 1%
+
+
+With all layers displayed together I then exported as PDF and opened the
+PDF in Adobe Illustrator, where I added the key and text
+
+
+
+
+
+
