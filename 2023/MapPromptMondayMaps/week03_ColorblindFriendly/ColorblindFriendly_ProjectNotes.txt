@@ -1,0 +1,98 @@
+###########################################################
+###########################################################
+
+Paid Sick Leave and Paid Family Leave US Hex Map
+Author: Devin Lea
+
+Date project started: 1/17/2023
+Last updated: 1/24/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my colorblind friendly map
+for week 3 #MapPromptMonday 2023
+
+I also wanted to see a visualization of where there are
+paid sick leave and paid family leave laws in place in
+the United States
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+I didn't use any GIS type of data for this map. I created my own hexmap of US
+states, territories, and commonwealths because I didn't like how hexagons
+were being warped by projections when using geospatial data.
+
+However, the data I used for the map came from several sources, listed below:
+https://www.lgbtmap.org/img/maps/citations-fmla-spouse.pdf
+https://www.americanprogress.org/article/the-state-of-paid-sick-time-in-the-u-s-in-2023/
+https://bipartisanpolicy.org/explainer/state-paid-family-leave-laws-across-the-u-s/
+https://www.kff.org/womens-health-policy/fact-sheet/paid-leave-in-u-s/
+
+In summary, all of these sources had been updated within the past year or so,
+and I compiled them together and determined my various categories for the map
+from these sources. States fell into one of six categories:
+- Has no leave laws
+- Has paid sick leave
+- Has general personal paid leave law
+- Has paid medical leave law
+- Has paid family leave law
+- Has paid sick leave and paid family leave laws
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+In my hex template I start from I had font Franklin Gothic Medium Cond
+
+I first had to decide how I wanted to color my data. Given I had six
+qualitative categories and I wanted a colorblind friendly color palette,
+I used Figure 1 (bright qualitative color scheme) from Paul Tol's website:
+https://personal.sron.nl/~pault/
+
+I used following colors for my categories:
+gray: no laws
+red: paid sick leave only
+cyan: general personal leave
+purple: paid medical leave only
+green: paid family leave only
+yellow: paid family leave and paid sick leave laws
+
+Added remaining elements like key and relevant text
+
+
+
