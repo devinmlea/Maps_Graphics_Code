@@ -41,3 +41,10 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 
 ![DTE_PowerPlantsMap](https://user-images.githubusercontent.com/119870562/223247117-bfd97556-7735-4877-9c8b-04ec76e5258d.jpg)
 
+### Week 10: Favorite Animal
+
+![PumaRangeMap2](https://user-images.githubusercontent.com/119870562/225722575-9d15a06c-9805-4abc-b20f-d113881a0bf1.jpg)
+
+### Week 11: Earth Imagery
+
+![Congo_Deforestation_Img](https://user-images.githubusercontent.com/119870562/225722706-a3770e6a-07c4-4de5-a9c5-3bbe70ddfc19.jpg)
