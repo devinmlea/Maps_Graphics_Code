@@ -48,3 +48,7 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 ### Week 11: Earth Imagery
 
 ![Congo_Deforestation_Img](https://user-images.githubusercontent.com/119870562/225722706-a3770e6a-07c4-4de5-a9c5-3bbe70ddfc19.jpg)
+
+### Week 12: Inspired By
+
+![SandCreekMap](https://user-images.githubusercontent.com/119870562/226462472-a460a3f8-3c51-4646-a98a-1957418ae0a0.jpg)
