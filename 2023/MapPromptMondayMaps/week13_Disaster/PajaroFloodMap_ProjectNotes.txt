@@ -1,0 +1,172 @@
+###########################################################
+###########################################################
+
+Pajaro Flooding Recent Disaster Map
+Author: Devin Lea
+
+Date project started: 03/24/23
+Last updated: 03/30/23
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Photoshop
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to create a map of a recent disaster for the weekly
+Map Prompt Monday topic. I had seen news coverage but not much of any
+mapping done for the recent Pajaro River flood in early March.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep + Data Visualization
+###########################################################
+
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The seven data sources I acquired:
+1) Evacuation zone area and levee breach location (The Mercury News map)
+2) California incorporated places (US Census Bureau)
+3) California roads (US Census Bureau)
+4) LiDAR data for hillshade (USGS)
+5) California state polygon for inset map (US Census Bureau)
+6) California hydrography data (Cal Dept. of Fish and Wildlife)
+7) California highway sign (Wikimedia Commons)
+
+
+1) Evacuation zone area and levee breach location (The Mercury News map)
+I used a map that can be found at this link: 
+https://www.mercurynews.com/2023/03/11/levee-breaches-on-pajaro-river-in-monterey-county-prompting-evacuations-and-rescues/
+The map I found and could view by Google Search "pajaro river levee map". The map
+showed evacuation area and where the levee breach were located. I used this map and digitized
+an approximate area of the flood from the evacuation area and based on the hillshade I derived
+from the USGS LiDAR data.
+
+2) California incorporated places (US Census Bureau)
+Went to this link to acquire data:
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+On the menu selected year 2022 and layer type was Places, then selected California shapefile to download
+
+3) California roads (US Census Bureau)
+Went to this link to acquire data:
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+On the menu selected year 2022 and layer type was Roads
+Then selected state of California under "All Roads"
+I then selected Monterey County and Santa Cruz county and downloaded roads shapefiles
+
+4) LiDAR data for hillshade (USGS)
+Downloaded data from USGS 3DEP LidarExplorer:
+https://apps.nationalmap.gov/lidar-explorer/#/
+I generally followed the steps of the Daniel Coe tutorial below. I found 1 meter Lidar
+DEMs that covered the area I wanted to map around the mouth of the Pajaro River and downloaded
+them and them used merge to combine them into a single DEM which I used for my hillshade.
+Tutorial: https://dancoecarto.com/downloading-and-preparing-lidar-dems-for-rem-processing
+
+5) California state polygon for inset map (US Census Bureau)
+Used US States 1:5m Cartographic Boundary File (shapefile)
+Obtained "cb_2018_us_state_5m" from US Census Bureau at this link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+Then in QGIS I selected California and saved it to its own shapefile
+
+6) California hydrography (shapefile)
+Downloaded hydrography shapefile from:
+https://hub.arcgis.com/datasets/CalEMA::california-river-and-stream-hydrography/about
+After downloading, I opened file in QGIS and selected the Pajaro river and saved the
+selection to its own shapefile
+
+7) California highway sign (Wikimedia Commons)
+Downloaded image from Wikimedia commons
+https://commons.wikimedia.org/wiki/File:California_1_1957.svg
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+Note: general style of map I was trying to emulate for this map was 
+future flood extent maps from New York Times as seen here:
+https://archive.nytimes.com/www.nytimes.com/interactive/2012/11/24/opinion/sunday/what-could-disappear.html
+
+To begin, opened QGIS and loaded in all the files
+
+After creating my single DEM for the project area, I changed the DEM to a hillshade
+under Properties -> Symbology -> Render Type. Altitude was set to 20 degrees, z factor
+set to 1.5. I changed transparency to 30%.
+
+I then selected out the Pajaro river polyline from the California hydrography dataset and
+digitized the approximate flooded area as described in the section above.
+
+The pajaro river polyline I set color as #588fbc, width 1.0 mm.
+The flood extent area color was #588fbc, opacity 40%.
+
+From the California places shapefile I selected the community extent of Pajaro and saved
+the selection to its own shapefile. I then removed all places except Pajaro and for the
+Pajaro extent shapefile changed color to #c9be61 and opacity to 30%.
+
+For the Santa Cruz County and Monterey county roads layers I went to Symbology and changed
+from Single Symbol to Categorized. For Value I categorized by "MTFCC". For more information
+on what these codes mean, see link:
+https://sites.google.com/site/geospatialmaps/resources/mtfcc-code/cfcc-codes
+For my purposes, here are setting I used for the various codes:
+S1100 - color: #808080, width 0.5mm
+S1200 - color: #8c8c8c, width 0.3mm
+S1400 - color: #999999, width 0.1mm
+S1630 - color: #999999, width 0.1mm
+Everything else was changed to transparent so to remove them from view
+
+I then exported the map from QGIS as a PDF at 1:55000 scale and 200dpi.
+I opened a new Adobe Illustrator file and copied the data from the PDF to the new file.
+
+To add the California highway signs on the appropriate highways, I first opened the
+downloaded image file from Wikimedia Commons in paint and removed the text by making
+the text "California" and "1" white to match interior color of the sign. I then saved
+this edit and opened the edited image in Adobe Photoshop and used the Select and Mask
+tool to only select the interior white and the first black boundary while rest of the
+sign and background was made transparent. I saved this edited image as a PNG from
+Photoshop and then opened and copied and scaled the image in my Illustrator file.
+
+All the text I added in Illustrator was the Open Sans Font from Google that is free
+to download at this link: https://fonts.google.com/specimen/Open+Sans
+
+To create the inset map in QGIS I used the California extent polygon and changed it
+using symbology to: 
+fill color: #efeff2
+stroke color: #ffffff, stroke width: 0.3 mm
+I then zoomed to extent where Bay Area and Monterey Bay could be seen and exported as
+a PDF, which I then opened and copied to my Illustrator file. I created a rectangle
+in illustrator that covered size and extent of the inset map area I wanted and created
+a clipping mask to frame the data to that rectangle that had no fill and white stroke.
+
+The callouts on the map for "Flooded Areas" and "Levee Breach" were created using the
+Rectangle and Polygon tools. Color was 231f20, text was white color.
+
+
+
