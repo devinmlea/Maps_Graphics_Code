@@ -5,7 +5,7 @@ Below you can quickly view all the maps I produced for Map Prompt Monday 2023. I
 What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromptMonday
 
 
-### Week 1: Region(s)
+## Week 1: Region(s)
 
 ![MidwestRegionMap](https://user-images.githubusercontent.com/119870562/223245693-028ca095-3210-496a-b36e-34fd85d65faa.jpg)
 
