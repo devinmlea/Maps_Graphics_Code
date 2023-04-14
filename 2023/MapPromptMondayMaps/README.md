@@ -64,5 +64,6 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 
 ## Week 15: Topography
 
-![MtRainier_3D_Topo-01](https://user-images.githubusercontent.com/119870562/232048946-3a53e7e7-1361-41d2-8629-ce718e3b3646.jpg)
+![MtRainier_3D_Topo2-01](https://user-images.githubusercontent.com/119870562/232050685-fd43a9ce-5d73-49cf-b92e-951c89fb37bc.jpg)
+
 
