@@ -1,6 +1,7 @@
 # Map Prompt Monday Maps
 
-Below you can quickly view all the maps I produced for Map Prompt Monday 2023. In the weekly folders you can also find my detailed project notes about how I made that week's map and any other relevent data or sources.
+Below you can quickly view all the maps I produced for Map Prompt Monday 2023.
+In the weekly folders above you can also find my detailed project notes about how I made each week's map and any other relevent data or sources.
 
 What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromptMonday
 
@@ -56,3 +57,12 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 ## Week 13: Recent Disaster
 
 ![PajaroFloodMap](https://user-images.githubusercontent.com/119870562/228887778-68ac82dc-bc82-429c-9dd7-8d01d17497ba.jpg)
+
+## Week 14: Bucket List
+
+![USNationalParks_BucketList_Map-01](https://user-images.githubusercontent.com/119870562/232048861-042cc79f-74bc-4ac6-8290-63ef211ba9d7.jpg)
+
+## Week 15: Topography
+
+![MtRainier_3D_Topo-01](https://user-images.githubusercontent.com/119870562/232048946-3a53e7e7-1361-41d2-8629-ce718e3b3646.jpg)
+
