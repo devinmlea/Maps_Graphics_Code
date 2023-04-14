@@ -1,0 +1,92 @@
+TL;DR version: I generally followed the steps on this tutorial:
+https://www.youtube.com/watch?v=Mj7Z1P2hUWk
+NOTE: you will need to create a free acount on OpenTopography.org and
+request a free API key to be able to get the SRTM data to load.
+
+###########################################################
+###########################################################
+
+Mount Rainier 3D Topo Map
+Author: Devin Lea
+
+Date project started: 04/10/2023
+Last updated: 04/14/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Blender
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+The primary goal was to make a map for the Topography Map Prompt Monday
+prompt. I initially tried to create a different 3D map in QGIS but
+it was not working out, so I used the opportunity to try to create my
+first map using Blender.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+For this map I used Google Earth satellite data and the elevation data was from
+NASA SRTM. Both of these are accessible directly in Blender after you download
+and load in the BlenderGIS plugin
+
+I will explain steps I used to create the map in next section
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To create my map, I generally followed along with a number of the steps
+in the walkthrough of the video at the link here:
+https://www.youtube.com/watch?v=Mj7Z1P2hUWk
+
+I didn't have Blender on my computer before completing this map, so I first
+downloaded Blender 3.5 software. I also downloaded the BlenderGIS plugin
+from GitHub at this link:
+https://github.com/domlysz/BlenderGIS
+
+After opening Blender and loading the plugins as discussed in the video,
+I added Google Earth satellite imagery and went zoom level 11 and centered
+on Mount Rainier before using 'e' button to set my scene. Then used SRTM
+30m data to add topography.
+NOTE: you will need to create a free acount on OpenTopography.org and
+request a free API key to be able to get the SRTM data to load.
+
+I then followed some of the same steps in the video to edit the visual texture
+and look of the landscape to make it look more realistic.
+
+After this I found the view angle I liked and exported an image of my view
+from Blender.
+
+I opened the exported image then in Adobe Illustrator and added appropriate text
+labels of rivers and glaciers to the map.
