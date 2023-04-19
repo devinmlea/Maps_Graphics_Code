@@ -66,4 +66,7 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 
 ![MtRainier_3D_Topo2-01](https://user-images.githubusercontent.com/119870562/232050907-2bf59772-c3fb-45ba-bf52-9baee96f2479.jpg)
 
+## Week 16: Environment
+
+![Hawaii_Ecotourism_Map-01](https://user-images.githubusercontent.com/119870562/233136687-b79ae8be-5eaf-4e65-8f72-6a170ef55561.jpg)
 
