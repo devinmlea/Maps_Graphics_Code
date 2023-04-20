@@ -1,7 +1,7 @@
 # Map Prompt Monday Maps
 
 Below you can quickly view all the maps I produced for Map Prompt Monday 2023.
-In the weekly folders above you can also find my detailed project notes about how I made each week's map and any other relevent data or sources.
+Above you can also find my detailed project notes about how I made each week's map and any other relevent data or sources.
 
 What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromptMonday
 
