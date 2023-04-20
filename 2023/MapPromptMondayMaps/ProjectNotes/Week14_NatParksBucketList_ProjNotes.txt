@@ -1,0 +1,108 @@
+###########################################################
+###########################################################
+
+US National Parks Bucket List
+Author: Devin Lea
+
+Date project started: 03/31/2023
+Last updated: 04/05/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Paint
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my bucket list prompt for Map
+Prompt Monday, and thought it would be fun to review what
+US National Parks I have been to as well as the ones I haven't
+been to but would most like to go to
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) National Parks lat/long locations (.kmz file)
+2) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+3) Natural Earth 50m Gray Earth with Shaded Relief, Hypsography, and Ocean Bottom (Raster)
+4. National Parks Service Logo (image)
+
+
+1) National Parks lat/long locations (.kmz file)
+Went to Wikipedia page with list of US National Parks
+https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States
+At top of list there was option "Download coordinates as: KML"
+Downloaded kml file with lat/long locations for National Parks
+
+2) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+3) Natural Earth 50m Gray Earth with Shaded Relief, Hypsography, and Ocean Bottom (Raster)
+Downloaded from this link:
+https://www.naturalearthdata.com/downloads/50m-raster-data/50m-gray-earth/
+
+4) National Parks Service Logo (image)
+Downloaded the Twitter profile image of National Park Service
+https://twitter.com/NatlParkService/photo
+
+###########################################################
+Data Visualization
+###########################################################
+
+I first took the downloaded image of the National Park Service Logo and opened
+it in Microsoft Paint and used the eyedropper tool to sample colors from the
+image. 
+
+Original colors I sampled from image:
+orange/brown: #c16c2c
+green: #374e20
+However, I felt these colors were too dark based on the gray topography background,
+so I ended up lightening them up. The final colors I used are here:
+orange color NPS logo update - #d97731
+green color NPS logo update: #638c3a
+
+I loaded the kml points layer, states boundary layer, and shaded relief raster into QGIS
+
+Changed projection North America Lambert Conformal Conic (ESRI:102009)
+
+For states boundary I set fill to fully transparent, stroke color: #f2f2f2, 0.12mm stroke width
+Changed shaded relief raster transparency to 85%
+Set points fill color to #638c3a, stroke color to #333333, hairline stroke width
+
+Export as PDF at 1:24,000,000 and 200 dpi for continental United States
+Export focused on Alaska at 1:24,000,000 and 200dpi, same projection
+
+Export focused on Hawai'i, changed projection to ESRI:102007, Scale 1:10,000,000 and 200 dpi
