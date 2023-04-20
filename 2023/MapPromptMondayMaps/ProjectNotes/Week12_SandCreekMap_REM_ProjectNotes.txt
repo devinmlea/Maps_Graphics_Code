@@ -1,0 +1,85 @@
+###########################################################
+###########################################################
+
+Inspired By Daniel Coe REM, Sand Creek, Wyoming
+Author: Devin Lea
+
+Date project started: 03/17/2023
+Last updated: 03/20/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to create a map following Daniel Coe's tutorials
+for creating Relative elevation models for rivers for the
+"Inspired By" topic this week of Map Prompt Monday 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep + Data Visualization
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data, as well as my visualization of the data.
+
+I generally followed along with two tutorials on Daniel Coe's website:
+1) https://dancoecarto.com/downloading-and-preparing-lidar-dems-for-rem-processing
+2) https://dancoecarto.com/creating-rems-in-qgis-the-idw-method
+
+The first link shows how to download LiDAR-derived 1m resolution DEMs from USGS.
+The second link provides steps how to create Relative Elevation Models after
+you have prepared your initial LiDAR data.
+
+
+I followed the first link to prepare my LiDAR data from USGS, with a couple extra steps
+based on my data.
+
+Once I downloaded all the rasters I needed and merged them in my study area (confluence of
+Little Snake River and Sand Creek in south Central Wyoming, USA), I found that the area
+of my merged raster was much bigger than the actual study area I wanted and was a massive file
+(approx 30 GB).
+To focus on my study area and make a manageable raster size, I zoomed into the area of extent
+I wanted for my new raster and used Clip Raster by Extent tool to clip to the area shown in the
+view window. This decreased my raster to a manageable size (about 1GB). 
+
+However, around the edges I had cells with values of 0, which were no data.
+I used r.null to set 0 values to null in a new raster, so all the data values corresponded
+correctly with elevation.
+
+After this I generally followed the steps outlined by the IDW method link:
+https://dancoecarto.com/creating-rems-in-qgis-the-idw-method
+I followed these steps to create my Relative Elevation Model.
+
+After creating the REM I played with various color schemes until I found one I liked
+with a section of the study area that I think looked interesting.
+
+I exported the map extent as a JPEG file format at 300 dpi and then opened the image
+and copied to a new file in Adobe Illustrator. In Illustrator I added appropriate text
+(font was EB Garamond) and when finished exported my .ai file as a JPEG file format.
