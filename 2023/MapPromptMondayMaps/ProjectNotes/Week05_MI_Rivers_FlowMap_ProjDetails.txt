@@ -1,0 +1,140 @@
+###########################################################
+###########################################################
+
+Michigan Rivers Maximum Base Flow Map
+Author: Devin Lea
+
+Date project started: 1/30/2023
+Last updated: 2/2/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Flow Map entry for Map Prompt
+Monday week 5 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were six data sources I acquired:
+1) Base Flow data of Michigan streams (geopackage)
+2) Natural Earth 10m land shapefile (shapefile)
+3) Natural Earth 10m lakes shapefile (shapefile)
+4) Natural Earth 10m Admin 1 – States, Provinces (shapefile)
+5) Natural Earth 10m Shaded Relief, Large size (shapefile)
+6) Michigan Lake Polygons (shapefile)
+
+
+1) Base Flow data of Michigan streams (geopackage)
+
+Downloaded geopackage data from here:
+https://gis-egle.hub.arcgis.com/datasets/egle::base-flow-of-michigan-streams/about
+
+
+2) Natural Earth 10m land shapefile (shapefile)
+
+Downloaded shapefile from here:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+
+3) Natural Earth 10m lakes shapefile (shapefile)
+
+Downloaded shapefile from here:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+
+4) Natural Earth 10m Admin 1 – States, Provinces (shapefile)
+
+Downloaded shapefile from here:
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+
+
+5) Natural Earth 10m Shaded Relief, Large size (shapefile)
+
+Downloaded shapefile from here:
+https://www.naturalearthdata.com/downloads/10m-raster-data/10m-shaded-relief/
+
+
+6) Michigan Lake Polygons (shapefile)
+
+Polygons of smaller michigan lakes. Downloaded from Michigan GIS Open Data here:
+https://gis-michigan.opendata.arcgis.com/datasets/lake-polygons/explore?location=44.883491%2C-86.417800%2C7.60
+
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in all the files
+
+I first used selection tool to select only the Michigan state shapefile from
+the States and Provinces layer, and used save selected features to new
+layer to create a new shapefile layer of the Michigan state polygon
+Then changed its color to #D7D7EB and 50% opacity
+
+For the rivers base flow data, I used select by attributes and selected rivers where
+base flow exceeded 100 cfs and saved the selected features to a new shapefile
+and displayed only rivers with base flow > 100 cfs
+
+For Michigan lake polygons layer, I used select by attribute to select lakes
+that were greater than 500 hectares and then saved the selected features to
+a new shapefile and displayed the selected lakes
+
+Set color of 1:10m land as #987db7, set opacity to 10%
+Set color of 1:10m lakes and Michigan lake polygons as #08306B
+
+Changed opacity of the shaded relief layer to 25%
+
+Then for the rivers base flow data, under symbology I set to Graduated
+and used Base Flow as the value. I used equal interval to divide the river
+base flow into 10 categories. In QGIS I gave each category a different color,
+I then in Adobe Illustrator later changed all of these lines to the same color
+(#08306B) and set their stroke size to increase proportional with increasing
+categories of flow size
+
+Before exporting, layers were rganizaed in following order:
+1) Michigan Lakes Polygons
+2) Base Flow data of Michigan streams
+3) Natural Earth 10m lakes shapefile
+4) Michigan state shapefile
+5) Natural Earth 10m land shapefile
+6) shaded relief
+
+Exported as PDF at 150dpi, then opened and copied data to new .ai file in Adobe Illustrator
+
+In Illustrator, I changed the river colors and stroke sizes based on their flow,
+also removed some small michigan lakes for visual clarity. Then added labels and text
