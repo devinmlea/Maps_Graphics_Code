@@ -1,0 +1,122 @@
+###########################################################
+###########################################################
+
+Puma Favorite Animal Map
+Author: Devin Lea
+
+Date project started: 03/06/2023
+Last updated: 03/16/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Photoshop
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to create a map for the favorite animal prompt
+for Map Prompt Monday.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) Habitat extent from IUCN Red List (.shp)
+2) Natural Earth Data 1:50m Land polygons (.shp)
+3) Natural Earth Data 1:50m Shaded Relief (GeoTiff)
+4) Puma images (Wikimedia commons)
+
+
+1) Puma habitat extent from IUCN Red List (.shp)
+
+To acquire habitat extent for Puma concolor, I logged onto my account on the IUCN
+Red List Website: https://www.iucnredlist.org/ (You can register for a free account
+if you don't already have one). I then searched for Puma and went to the species page,
+where from Download tab I selected "Range Data - Polygons (SHP)".
+
+2) Natural Earth Data 1:50m Land polygons (.shp)
+
+Downloaded here:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+
+3) Natural Earth Data 1:50m Shaded Relief (GeoTiff)
+Downloaded here:
+https://www.naturalearthdata.com/downloads/50m-raster-data/
+
+4) Puma images (Wikimedia commons)
+I acquired two images of Pumas from Wikimedia Commons:
+a) https://commons.wikimedia.org/wiki/File:Puma_concolor_stanleyana_-_Texas_Park_-_Lanzarote_-PC08_(cropped).jpg
+b) https://commons.wikimedia.org/wiki/File:Puma_face.jpg
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and loaded in the three data layers in order:
+Puma habitat (top)
+Land polys (middle)
+Shaded Relief (bottom)
+
+The main challenge for this map was that I wanted a projected coordinate
+system focused on both North and South America, but there are not really
+any pre-set ones that I liked. So I created a user-defined projection
+with the following parameters:
+Proj4 string:
++proj=aeqd +lat_0=5 +lon_0=-77.78 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs +type=crs
+In other words, I created a equidistant projection with center latitude at 5 deg N and center
+longitude at 77.78 deg west. I used the Projection Wizard web tool to easily set the area
+I wanted to cover and then just copied the PROJ string right into the unique coordiate
+system parameters.
+Projection Wizard Tool can be found at: https://projectionwizard.org/
+
+Set land polygons color as #d1baa7 and opacity to 45%
+Shaded relief opacity set to 80%
+
+For Puma Habitat, I categorized the data using Value = PRESENCE under
+the Symbology section. There were 2 data categories (1 = extant,
+3 = possibly extant). I set color of 1 = #503d2f and 60% opacity.
+I set color of 3 = #987356 and 65% opacity.
+
+I then exported the map as a PDF at 1:70,000,000 scale
+
+
+After acquiring the Puma images I wanted from Wikimedia Commons, I opened them in Adobe
+Photoshop and used the Select and Mask Tool to select the part of the image I wanted to
+keep (the Pumas) and make the background transparent. Then I exported these as PNG files
+to keep the transparency.
+
+I then created a new Adobe Illustrator file and copied the map data and the edited
+Puma images into the .ai file. Then added relevant text, text font was Impact.
+
+
