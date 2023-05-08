@@ -76,4 +76,5 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ## Week 18: Urban vs. Rural
 
-![USA_PopDensity](https://user-images.githubusercontent.com/119870562/236840156-e3fd43c8-6f32-4a38-aa3b-1cfd18288c2b.jpg)
+![USA_PopDensity-01](https://user-images.githubusercontent.com/119870562/236840913-52f6c138-fd72-4103-8634-8717c62eb51a.jpg)
+
