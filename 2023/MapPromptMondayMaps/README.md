@@ -70,3 +70,10 @@ What is Map Prompt Monday? See here: https://github.com/MapPromptMonday/MapPromp
 
 ![Hawaii_Ecotourism_Map-01](https://user-images.githubusercontent.com/119870562/233136687-b79ae8be-5eaf-4e65-8f72-6a170ef55561.jpg)
 
+## Week 17: Disease
+
+No new map, [reposed Michigan COVID map I created last year](https://github.com/devinmlea/Maps_Graphics_Code/tree/main/2022/MIPctSickCOVID)
+
+## Week 18: Urban vs. Rural
+
+![USA_PopDensity](https://user-images.githubusercontent.com/119870562/236840156-e3fd43c8-6f32-4a38-aa3b-1cfd18288c2b.jpg)
