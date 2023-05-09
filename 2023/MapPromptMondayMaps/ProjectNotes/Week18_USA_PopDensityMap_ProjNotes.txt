@@ -1,0 +1,143 @@
+###########################################################
+###########################################################
+
+Population Density Contiguous USA (Rural v. Urban) Map
+Author: Devin Lea
+
+Date project started: 04/30/2023
+Last updated: 05/08/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Microsoft Excel
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Urban v. Rural entry for Map Prompt
+Monday week 18 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) State census tracts (shapefile)
+2) US Nation 1:5m Cartographic Boundary File (shapefile)
+3) US States 1:5m Cartographic Boundary File (shapefile)
+4) Census Tract population estimates (.csv)
+
+
+1) State census tracts (shapefile)
+Went to TIGER/Line Shapefiles page of US Census Bureau
+https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+Year selected was 2018, Layer Type was Census Tracts. After submitting
+then selected each contiguous USA state and downloaded census tracts shapefile.
+
+2) US Nation 1:5m Cartographic Boundary File (shapefile)
+Obtained "cb_2018_us_nation_5m" from US Census Bureau at this link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+
+3) US States 1:5m Cartographic Boundary File (shapefile)
+Obtained "cb_2018_us_state_5m" from US Census Bureau at this link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+
+4) Census Tract population estimates (.csv)
+This 2018 data I had previously acquired from the US Census Bureau 2018 American
+Community Survey. The population estimates and the census tract identifying codes
+I saved in a .csv file that I would join to the state shapefiles to then calculate
+population density.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, I opened QGIS and loaded the state census tracts, national and states cbfs, and
+usa census tract population estimates .csv
+
+In order to show the population density for each census tract, for each state
+census tracts shapefile I performed the following steps:
+
+a) created new field named GEOID2 that was an integer data type
+Then in field calculator used the expression:
+GEOID2 - to_int("GEOID")
+to update GEOID2 as integer values of GEOID
+
+b) calculate new field, square km from ALAND in field calculator using expression:
+"ALAND" / 1000000
+This created a new field named "SQKM" (data type REAL, length 10, precision 2)
+
+c) join attribute data from census tract population estimates .csv to state census tracts
+joined using GEOID2 field in state census tracts shapefiles
+
+d) Checked for 0 values of ALAND and removed these where applicable
+0 ALAND value meant there was no land area (only water), so these census tracts were deleted
+
+e) check edits for NULL values for population
+I double checked the population estimates for any NULL values where there was not a match
+between the .csv population estimates and census tract shapefiles once they were joined
+and if there were any NULL values the census tracts were removed
+(there were almost none of these across the 48 states)
+
+f) calculated pop density in new field using field calculator and the expression:
+"CT_Pop_AllUS_Pop" / "SQKM"
+This created new field named "POPDEN" (data type REAL, length 10, precision 2)
+that was population density per square kilometer
+
+After completing these steps for the 48 contiguous USA states I then used the following
+steps to display the population density for census tracts:
+
+a) For each shapefile, under Properties -> Symbology, used Graduated symbology with value
+"POPDEN". Then classified the data with 5 classes.
+
+b) I then manually changed the classes so that the values would be by exponential of 10 as follows:
+0.00 - 9.99 sq km 
+10 - 99.99 sq km
+100 - 999.99 sq km
+1000 - 9999.99 sq km
+10000 + sq km
+
+c) I then slightly altered the color scheme for the five classes to be as follows:
+0.00 - 9.99 sq km (#fffbfb)
+10 - 99.99 sq km (#ffebeb)
+100 - 999.99 sq km (#ff9999)
+1000 - 9999.99 sq km (#ff5959)
+10000 + sq km (#ff0000)
+
+For the states cartographic boundary file I then made the fill transparent and the stroke width
+0.02 mm. I also made fill transparent for the national cartographic boundary file and made its
+stroke width 0.10 mm.
+
+To finish, I exported the map from QGIS as a PDF, which I then copied into a new Adobe Illustrator
+file and added text and a legend
+

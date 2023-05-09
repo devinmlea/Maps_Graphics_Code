@@ -1,0 +1,95 @@
+###########################################################
+###########################################################
+
+Places I've Called Home Map
+Author: Devin Lea
+
+Date project started: 05/07/2023
+Last updated: 05/09/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Microsoft Excel
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Home entry for Map Prompt
+Monday week 19 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) Natural Earth Data Cross Blended Hypso w/SR, Water, and Drainages (Raster)
+2) US Nation 1:5m Cartographic Boundary File (shapefile)
+3) US States 1:5m Cartographic Boundary File (shapefile)
+4) Places I have lived (.csv)
+
+
+1) Natural Earth Data Cross Blended Hypso w/SR, Water, and Drainages (Raster)
+Went to Natural Earth Data 1:10m cross-blended Hypsometric Tints
+https://www.naturalearthdata.com/downloads/10m-raster-data/10m-cross-blend-hypso/
+Downloaded large size of Cross Blended Hypso with Shaded Relief, Water, and Drainages
+
+2) US Nation 1:5m Cartographic Boundary File (shapefile)
+Obtained "cb_2018_us_nation_5m" from US Census Bureau at this link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+
+3) US States 1:5m Cartographic Boundary File (shapefile)
+Obtained "cb_2018_us_state_5m" from US Census Bureau at this link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+
+4) Places I have lived (.csv)
+I found latitude and longitude coordinates for the cities I have lived in and saved
+this data with location names in a .csv file
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, I opened QGIS and loaded the four data sets
+
+For the states cartographic boundary file I made the fill transparent and the stroke width
+0.08 mm. I also made fill transparent for the national cartographic boundary file and made its
+stroke width 0.15 mm.
+
+For the point locations where I lived, I used black (#232323) dot, size 2.0
+
+I then exported the map at 1:16,000,000 scale and 150 dpi from QGIS as a PDF, which I then copied
+into a new Adobe Illustrator file
+
+I Adobe Illustrator I added the text and flow arrows. Title text was called "Great Vibes"
+(downloaded from 1001fonts.com), other text was Open Sans. Flow arrows color in AI was #414042,
+and arrows had 80% opacity.
