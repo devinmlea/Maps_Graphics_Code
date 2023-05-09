@@ -78,3 +78,7 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![USA_PopDensity-01](https://user-images.githubusercontent.com/119870562/236840913-52f6c138-fd72-4103-8634-8717c62eb51a.jpg)
 
+## Week 19: Home
+
+![HomeMapAI-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/a73057c0-c65b-48ba-9730-3685c108175a)
+
