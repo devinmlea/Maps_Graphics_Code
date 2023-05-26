@@ -88,7 +88,8 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ## Week 21: Book Cover
 
-![BookCoverMap-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/2e5ceaaa-317c-4864-95d7-cf207fe7d8c4)
+![BookCoverMap-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/2e6dca70-e5e9-45bb-95c2-48326e8f855c)
+
 
 
 
