@@ -82,3 +82,12 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![HomeMapAI-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/a73057c0-c65b-48ba-9730-3685c108175a)
 
+## Week 20: Proportional Symbols
+
+![NtlParksVisitorsMap](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/f3385f3e-0f26-4dfe-ae7c-06e4106b5229)
+
+## Week 21: Book Cover
+
+![BookCoverMap](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/62934efc-cd69-4ace-b689-6cb61264119b)
+
+
