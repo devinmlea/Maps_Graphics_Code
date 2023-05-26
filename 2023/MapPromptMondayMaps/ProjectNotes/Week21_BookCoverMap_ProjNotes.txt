@@ -1,0 +1,84 @@
+###########################################################
+###########################################################
+
+Book Cover Map
+Author: Devin Lea
+
+Date project started: 05/22/2023
+Last updated: 05/26/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Paint
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Goal to make map for Book Cover prompt for MapPromptMonday
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) Washington Counties with Natural Shoreline / washsh area (shapefile)
+2) Naval Ensign of Empire of Japan Flag (Wikimedia)
+
+
+1) Washington Counties with Natural Shoreline / washsh area (shapefile)
+Went to link: https://gis-kingcounty.opendata.arcgis.com/
+Then under Administrative Boundaries downloaded file named
+"Washington Counties with Natural Shoreline / washsh area"
+
+2) Naval Ensign of Empire of Japan Flag (Wikimedia)
+Image of the flag was acquired at link here:
+https://en.wikipedia.org/wiki/Rising_Sun_Flag#/media/File:Naval_ensign_of_the_Empire_of_Japan.svg
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+I first took the Naval Ensign flag and opened in Microsoft Paint. I changed the color of the sun
+to color from the current Japanese flag (#bc002d)
+
+I then opened the Washington Counties file in QGIS. I used the dissolve tool to dissolve the
+county boundaries and get just the state outline (I used this approach because this file had
+the most detailed boundaries around Puget Sound I could find).
+
+I then set white fill and black stroke for the dissolved layer and exported from QGIS at 70dpi to PDF
+
+Opened and copied PDF data into Adobe Illustrator. I then ended up changing fill to black with a white
+stroke outline of 0.25 width.
+
+I opened and copied the image of my edited Naval Ensign flag to my map, putting it behing Puget Sound. I
+added a white rectangle below lower part of sun so that the red rays would only be at top of the image.
