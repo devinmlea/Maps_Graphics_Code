@@ -90,6 +90,9 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![BookCoverMap-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/2e6dca70-e5e9-45bb-95c2-48326e8f855c)
 
+## Week 22: Climate Change Vulnerability
+
+![India_40CPlusDays_Map](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/db6c9a7c-1b0e-4b54-b448-e29e052dc36d)
 
 
 
