@@ -1,0 +1,143 @@
+###########################################################
+###########################################################
+
+India May Heat Days Map
+Author: Devin Lea
+
+Date project started: 5/30/2023
+Last updated: 6/13/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Climate Change Vulnerability entry for Map Prompt
+Monday week 22 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were two data sources I acquired:
+1) May weather data from ogimet.com (.csv I created)
+2) Natural Earth Data 1:50m countries polygons (shapefile)
+
+
+1) May weather data from ogimet.com (.csv I created)
+
+On the ogimet.com site, I searched India, which brought up all the weather stations
+and data in India. I then went through each weather station, and if the station had either
+0 or 1 day of missing data, I counted the number of days the maximum temperature was 35.0 C
+or higher, and a second count of number of days max temperature was 40.0 C or higher. I also
+used Google Geocoding API to plug in the location name and find latitude and longitude
+coordinates for each place. These data were recorded in a .csv file.
+* Given the format of the data provided, my counts actually only covered between May 2 to May 30,
+so May 1 and May 31 are not included in the data
+** To make sure all of India would be covered by the Kriging tool I used, I added a few dummy points
+outside the country borders of India. You can view the data I used in the accompanying data
+file ("Week22_IndiaHeatDays_Data.csv")
+
+2) Natural Earth Data 1:50m countries polygons (shapefile)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/50m-cultural-vectors/
+
+
+I also used the following article as reference when producing my map and to add my
+text describing the temperatures in May, based on similar heatwave in April:
+- https://thewire.in/environment/climate-change-april-2023-heat-wave-india
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+I first opened QGIS and loaded my .csv points and the world countries shapefile
+
+I wanted to interpolate my points to create a continuous surface, and the best option
+to me seemed to be Kriging. After searching around, I decided using the plugin called
+Smart-Map would be my best option to do kriging. I initially learned about this resource
+via this YouTube video:
+"Interpolate points to rasters with kriging in QGIS using the Smart-Map plugin"
+by Hans van der Kwast
+https://www.youtube.com/watch?v=-Vv1cAhiSVk
+
+However, I realized that I would need my points to be in a UTM coordinate system so that
+I could perform the kriging with this plugin. To quickly convert my lat,long points to
+UTM coordinates using QGIS, I used the steps highlighted in this video:
+"Convert Lat Lon to XY (UTM) using QGIS, Easy and Free"
+by Theara.T
+https://www.youtube.com/watch?v=q_FeDXJ_NJY
+
+I set my UTM coordinates based on WGS 84 / UTM zone 44N (EPSG: 32644), and then I just
+restarted QGIS so I could get a blank document again and projected the new .csv file
+and the countries shapefile using the UTM 44N projection.
+
+Now with the UTM coordinates I could use the Smart-Map plugin. I started the plugin
+and loaded in my data in the Data tab, with my number of days over 40C as the z value.
+On the grid tab, I set pixel size to 5000 x 5000 meters. I generally left the values
+on the interpolation tab as they were before running Interpolate to generate my raster,
+values listed here:
+Max Distance: 1868707.467
+Lag: 102008.344
+Model: Linear to Sill
+Co: 4.663
+Co + C: 73.294
+A: 725992.328
+
+Once I had created the interpolated surface, I changed the color ramp to the 'Reds' ramp
+and made some unique adjustments using breaks listed below:
+Position: 0%, opacity 0%
+Position: 25%, #fdd1c0, opacity 67%
+Position: 50%, #fb7050
+Position: 75%, #d32020
+Position: 100%, #67000d
+
+For the countries shapefile I used the folowing symbology:
+Fill color: #fffbfb
+Stroke color: #232323
+Stroke width: 0.04 mm
+
+I then exported the map as a .pdf from QGIS at 1:20,000,000, then copied data from PDF
+to a new .ai file in Adobe Illustrator.
+
+In Adobe Illustrator I made a copy of the India polygon boundary, gave it a thicker stroke
+width (0.6), then I created a clipping mask with the interpolated raster and the original
+India polygon boundary to clip the interpolated surface to the shape of India.
+
+I then took an image screen capture of the color ramp in QGIS and imported the image into
+the .ai file and scaled it so I could use it for my map key. I then added appropriate
+text.
+
+To finish, I selected all country boundaries except India and gave them a slight Gaussian
+Blur (2 pixels)
