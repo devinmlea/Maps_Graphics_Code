@@ -1,0 +1,173 @@
+###########################################################
+###########################################################
+
+Northern Hemisphere Summer Solstice Cities with most sunlight
+Author: Devin Lea
+
+Date project started: 6/19/2023
+Last updated: 6/23/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- LibreOffice
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Solstice/Seasons entry for Map Prompt
+Monday week 25 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were five data sources I acquired:
+1) Northernmost cities (.csv I created)
+2) World Hillshade (ESRI data layer)
+3) Natural Earth Data 1:10m countries polygons (shapefile)
+4) Natural Earth Data 1:110m graticules, 20 degrees (shapefile)
+5) Natural Earth Data 1:10m Natural Earth 1 Raster (TIF)
+6) Time extents of sunlight hours (.csv I created)
+
+1) Northernmost cities (.csv I created)
+I initially planned to do northernmost capital cities, which can be found here:
+https://en.wikipedia.org/wiki/List_of_national_capitals_by_latitude
+and sorted by latitude, but most were very close together so I wanted a map
+with a little more diverse data, so I ended up going to this page:
+https://en.wikipedia.org/wiki/List_of_northernmost_settlements
+and acquiring lat/long data for northernmost cities with more than 250,000 inhabitants.
+*I added Reykjavik in Iceland even though it doesn't meet this list because it
+is the northernmost capital of a sovereign county as I nod to my initial idea
+of northernmost capitals, a number of which also made the latter list.
+
+2) World Hillshade (ESRI data layer)
+When I opened QGIS I loaded this layer using Data Source Manager -> ArcGIS REST Server
+Then used this link with the REST server
+https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer
+When connected then I could load the world hillshade layer into my map
+
+3) Natural Earth Data 1:10m countries polygons (shapefile)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+Specifically, I went under section of Admin 0 – Countries point-of-views
+and downloaded the Ukraine version
+
+4) Natural Earth Data 1:110m graticules, 20 degree intervals (shapefile)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/110m-physical-vectors/
+
+5) Natural Earth Data 1:10m Natural Earth 1 Raster (TIF)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/10m-raster-data/10m-natural-earth-1/
+Natural Earth I with Shaded Relief, Water, and Drainages
+Medium size
+
+6) Time extents of sunlight hours (.csv I created)
+I was intially inspired in my design by a map with concentric circles showing the
+extents of sun above horizon hours by Brian Brettschneider. I initially tried to
+use equations I found on world wide web in Libre Office to calculate times based
+on latitudes, but after not being satisfied that the results I was getting were correct
+and searching I found and used solortopo.com:
+http://www.solartopo.com/daylength.htm
+How I used this is since you can click any location on Earth and it will provide you
+with time sun is above horizon on your given day, I chose June 21, 2023 for date and
+I clicked around map until I found the different hour time limits (23 hours, 22 hours,...)
+down to 14 hour extent, and used that latitude with varying longitudes (every 1 degree)
+in an OfficeLibre spreadsheet and saved as a .csv
+So I started with a points layer, where each latitude also had an identifier which
+I could use to make the points into lines
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and added the six data layers
+I changed opacity of Natural Earth 1 Raster to 70% so I could get some
+background affect of the World Hillshade behind it
+
+I first used the Points to Path tool to create latitude lines that showed
+the extents for each hour difference of sun above the horizon
+To create individual lines for each latitude, I checked both the "Create closed
+paths" and for both "Order expression" and "Path group expression" I used the
+unique identifier for each latitude to group them.
+After creating this layer I turned off the original points layer
+
+I then changed projection to North Pole Lambert Azimuthal Equal Area (ESRI 102017)
+to focus map on North Pole and Arctic Circle
+
+I then changed symbology of sun extent latitude lines, graticules, countries, and cities points
+
+Sun extents latitude lines coloring:
+Initially clicked on "effect neon" under defaults, then changed as below
+Line: #26261e, 0.08mm stroke
+Outer Glow color: #ffffe7, spread 1.5
+
+Cities points:
+Size: 2mm
+Color: #232323
+Stroke color: #ffffff
+Stroke width: 0.4mm
+
+graticules:
+color: #ffffff
+width: 0.05mm
+
+countries:
+fill: transparent
+stroke color:#232323
+stroke width: 0.08mm
+
+Before export, from top to bottom, ordering of layers:
+- Cities
+- Sun extents by latitude
+- Countries
+- Graticules
+- Natural Earth Raster
+- World Hillshade
+
+Exported from QGIS at 1:150,000,000 scale
+
+Opened and copied to new .ai file in Adobe Illustrator
+
+Over top of the imported data layers I created a number of circles with no fill,
+stroke color 231f20, stroke width varied to be between the concentric circles of
+the sun above horizon extents, and opacity varied to make it darker the further from
+the center and less so as moved towards center.
+In arctic circle itself I created a circle with fill color #ffffe7, stroke color of
+b3b3a2, stroke width 0.3, opacity 70%
+
+All text was Open Sans (you can acquire for free on World Wide Web)
+All text color was #000000, for many text I used outer glow of color #ffffe7
+to help differentiate from background
+
+

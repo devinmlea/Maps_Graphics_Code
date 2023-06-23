@@ -1,0 +1,124 @@
+###########################################################
+###########################################################
+
+Michigan Boating Safety Map
+Author: Devin Lea
+
+Date project started: 6/12/2023
+Last updated: 6/23/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- LibreOffice
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+Primary goal was to make this for my Safety entry for Map Prompt
+Monday week 23 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project, I have detailed the software I used and
+actions I performed in the sections below that you can follow to re-create my product.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired:
+1) Natural Earth Data 1:10m lakes polygons (shapefile)
+2) Natural Earth Data 1:10m states/provinces (shapefile)
+3) National Safety Council Logo (image)
+4) Sites of 2022 fatal boating accidents in Michigan (from uscgboating.org/)
+
+1) Natural Earth Data 1:10m lakes polygons (shapefile)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Lakes and Reservoirs
+Download Lakes
+
+2) Natural Earth Data 1:10m states/provinces (shapefile)
+Obtained from this link:
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+Admin 1 – States, Provinces
+Download States and Provinces
+
+3) Acqired and saved copy of image found here:
+https://www.nacd.com/media-center/responsible-reflections-blog/nacd-joins-national-safety-council/
+
+4)  Sites of 2022 fatal boating accidents in Michigan (from uscgboating.org/)
+Information on 2022 Recreational Boating Statistics Here
+https://www.uscgboating.org/library/accident-statistics/Recreational-Boating-Statistics-2022.pdf
+For my map I put points once I was in Adobe Illustrator to best match what is seen in 
+Figure 12a on page 59
+I also used data from this document and the 2020 Recreational Boating statistics:
+https://www.uscgboating.org/library/accident-statistics/Recreational-Boating-Statistics-2020.pdf
+together to create the boating accidents and deaths chart. For both the 2020 and 2022 pdfs the
+fatality data by state is on page 63.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+To begin, opened QGIS and added natural earth data layers
+
+I first selected Michigan polygon from the states/provinces layer and saved the selection
+to a new layer. For the new Michigan layer polygon I set symbology as:
+fill color: #ebebf8
+stroke color: #232323
+Stroke width: 0.06mm
+
+Then from the lakes layer I selected the polygons covering the five great lakes and saved
+the selection to a new layer. I then used dissolve tool to dissolve the polygons into
+a single polygon.
+
+I then used the buffer tool five separate times to create internal buffers of the dissolved
+lakes layer and get the water lines effect.
+I used values of -0.02, -0.05, -0.09, -0.15, and -0.22 degrees
+
+I then used following colors for the original lake layers and buffers:
+Original: R:37,G:113,B:175
+B1 (-0.02): R:64,G:144,B:197
+B2 (-0.05): R:107,G:172,B:212
+B3 (-0.09): R:157,G:202,B:225
+B4 (-0.15): R:198,G:219,B:240
+B5 (-0.22): R:223,G:235,B:247
+
+I then exported the map as PDF and opened and copied to new .ai file in Adobe Illustrator
+
+I used circle tool to put points on the 2022 fatal boat accidents locations, based on points
+seen from 2022 Recreational Boating Statistics, Figure 12a on page 59
+Color: 1e1e1e
+
+Added National Safety Council Logo and text
+Title text is Impact font, other text around map was Frutiger Bold. Text on graph was Open Sans.
+
+I created the graph in LibreOffice and then copied it to Adobe Illustrator
+Changed accidents color to #004586
+Deaths line/text color was #1e1e1e
