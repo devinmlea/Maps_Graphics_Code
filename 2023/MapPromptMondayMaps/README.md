@@ -94,6 +94,12 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![India_40CPlusDays_Map](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/db6c9a7c-1b0e-4b54-b448-e29e052dc36d)
 
+## Week 23: Safety
 
+![MIBoatingSafetyMap](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/bf3141c8-ef12-466a-9624-d014955c8f20)
+
+## Week 24/25: Arctic or Antarctic and Solstice/Seasons
+
+![MidnightCitiesMap](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/202a9812-9611-47ff-aca0-ea9133110ee2)
 
 
