@@ -102,4 +102,11 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![MidnightCitiesMap](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/202a9812-9611-47ff-aca0-ea9133110ee2)
 
+## Week 26: Plants
+
+![Hawthorn_Endangered_Species_Map-01](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/eca59859-ef5c-4b7a-97ad-b6345c402fe9)
+
+## Week 27: Snow or Ice
+
+![SnowPlaceNamesUSA](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/9ce197ae-5ecb-4e2a-9588-b2be45f9c079)
 
