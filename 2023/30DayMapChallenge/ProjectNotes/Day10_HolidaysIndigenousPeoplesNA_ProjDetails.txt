@@ -1,0 +1,116 @@
+###########################################################
+###########################################################
+
+North America Holidays Honoring Indigenous Peoples Map
+Author: Devin Lea
+
+Date project started: 11/09/2023
+Last updated: 11/13/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Libre Office
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my North America map for #30DayMapChallenge
+
+I wanted to look across North America at where there are recognized
+holidays for Indigenous peoples and what those holidays entail
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+I acquired the following data sources:
+
+1) 1:50m countries (.shp)
+2) 1:50m states/provinces (.shp)
+3) 1:50m lakes (.shp)
+4) Countries and states holidays honoring indigenous people data (various websites)
+
+1) 1:50m countries
+Obtained from:
+https://www.naturalearthdata.com/downloads/50m-cultural-vectors/
+Admin 0 - Countries
+
+2) 1:50m states/provinces (.shp)
+Obtained from:
+https://www.naturalearthdata.com/downloads/50m-cultural-vectors/
+Admin 1 - states, provinces
+
+3) 1:50m lakes (.shp)
+Obtained from:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+Lakes + Reservoirs
+
+4) Countries and states holidays honoring indigenous people data (various websites)
+I collected information for all countries considered in North America by Wikipedia,
+as well as for U.S. states (minus Hawai'i). The information I collected and sorted
+in a .csv file.
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading files 1-3 into QGIS I performed following steps.
+
+Set Projection to ESRI:102009 (North_America_Lambert_Conformal_Conic)
+
+I selected countries not in North America from the countries layer and saved the selection
+as its own new shapefile named SelectCountriesNotNorthAmerica. From the countries that were in North
+America from the countries shapefile I selected countries that have a holiday honoring indigenous\
+peoples and saved that selection as its own file named CountriesIndigenousDay
+
+For the states/provinces file I selected U.S. States and saved them as their own shapefile
+named US_States. From US_States I selected states that have a designated holiday and saved to new
+shapefile named DesignatedHoliday. I also selected states that have had only a governor decree,
+and saved to new file named GovernorDecree.
+
+From the lakes shapefile, I selected the Great Lakes between US/Canada, Great Salt Lake and Lago
+de Nicaragua and saved selection to new shapefile called SelectedLakes.
+
+I then displayed the following layers and set symbology as so:
+Selected Lakes: fill color: #ffffff, no stroke
+DesignatedHoliday: fill color: #82779c, stroke: #ffffff, stroke width: 0.2mm
+GovernorDecree: fill style: BDiagonal, fill color: #b4adc7, stroke: #ffffff, stroke width: 0.2mm
+US_States: fill color: #dedbe7, stroke: #ffffff, stroke width: 0.2mm
+CountriesIndigenousDay: fill color: #82779c, stroke: #ffffff, stroke width: 0.2mm
+SelectCountriesNotNorthAmerica: fill color: #f5f5f5, stroke: #ffffff, stroke width: 0.2mm
+1:50m countries: fill color: #dedbe7, stroke: #ffffff, stroke width: 0.2mm
+
+I then exported the map as PDF and copied map data to new file in Adobe Illustrator
+
+I illustrator I added the text. Font was Open Sans

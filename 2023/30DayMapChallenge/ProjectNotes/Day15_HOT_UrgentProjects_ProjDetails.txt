@@ -1,0 +1,95 @@
+###########################################################
+###########################################################
+
+Humanitarian OSM Urgent Projects
+Author: Devin Lea
+
+Date project started: 11/14/2023
+Last updated: 11/17/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my OpenStreetMap map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The data sources I acquired:
+
+1) 1:50m countries (.shp)
+2) 1:50m ocean (.shp)
+3) Urgent HOT Projects (HOT website)
+
+1) 1:50m countries (.shp)
+Downloaded from:
+https://www.naturalearthdata.com/downloads/50m-cultural-vectors/
+
+2) 1:50m ocean (.shp)
+Downloaded from:
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+Ocean
+
+3) Urgent HOT Projects (HOT website)
+Went to:
+https://tasks.hotosm.org/explore
+Found locaions for all tasks that were marked urgent as of Nov 15, 2023
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading the countries and ocean files into QGIS, I performed following steps.
+
+Set projection to ESRI:54030 (World_Robinson)
+
+I found a picture of the HOT logo on world wide web and extracted color using eyedropper
+tool to set color for countries stroke and urgent project locations points
+
+Set symbology:
+Countries: fill: #faf5f5, stroke: #d73f3f, stroke width: 0.02 mm
+Ocean: fill: #c8c3c3
+
+Export as PDF at 1:170,000,000
+
+Copied data from PDF to new Adobe Illustrator file
+
+Added points (fill: #d73f3f, 3px x 3px) using ellipse tool
+
+Added text as needed, font was Open Sans; added HOT logo
+
+Background added using rectangle tool, fill color #F0E6E6

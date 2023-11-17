@@ -1,0 +1,136 @@
+###########################################################
+###########################################################
+
+Stateless Nations of Asia Map
+Author: Devin Lea
+
+Date project started: 11/04/2023
+Last updated: 11/13/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Libre Office
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my Asia map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The data sources I acquired, initally layered in QGIS in following order:
+
+1) Stateless Nations in Asia with > 5 million population (.csv I created)
+2) Stateless Nations extents (.shp I digitized)
+3) 1:50m countries (.shp)
+4) 1:50m shaded relief (GeoTIF)
+5) 1:50m ocean (.shp)
+
+1) Stateless Nations in Asia with > 5 million population (.csv I created)
+I first went through this Wikipedia page and identified stateless nations in Asia with
+more than 5 million people: https://en.wikipedia.org/wiki/Stateless_nation
+I listed these in a .csv file
+
+2) Stateless Nations extents (.shp I digitized)
+I used links via the Wikipedia article in #1 to find maps of historical extents of
+the stateless nations I identified, and in QGIS I created a new shapefile and then
+digitized approximate extents based on those maps. The stateless nations were:
+Cantonese - ID1
+Tamils ID2,3,4
+Pashtuns ID5
+Kurds ID6
+Assamese 7
+Uyghur 8
+Hazaras 9
+Baloch 10
+Ahwazi 11 (not used)
+Mon 12
+Hongkongers 
+Karen 13
+Tibetan 14
+Shan 15
+Kashmiri 16
+Moro 17
+
+3) 1:10m countries (.shp)
+Downloaded from:
+https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
+I used either Ukraine POV or Palestine POV
+
+4) 1:50m shaded relief (GeoTIF)
+Downloaded from:
+https://www.naturalearthdata.com/downloads/50m-raster-data/50m-shaded-relief/
+
+5) 1:10m ocean (.shp)
+Downloaded from:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Ocean
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading files 2-5 into GIS and digitizing layers the stateless nations, I performed following steps.
+
+Set projection to ESRI:102025 (Asia_North_Albers_Equal_Area_Conic)
+Rotation to -20 degrees
+
+Stateless nations layer:
+fill color: #ffbfbf, stroke color: #663333, stroke width: 0.40, dot line
+
+1:10m countries:
+fill color: #f5f5f7, stroke color: #999999, stroke width: 0.30, opacity of layer: 85%
+
+ShadedRelief: Opacity 80%
+
+For ocean layer, I created three internal (negative) buffers and then shaded each one to
+create effect in the coast.
+Buffer sizes: -0.2, -0.4, -0.7
+Original layer fill color: #d9f2ff
+Buffer 1 fill color: #e5f6ff
+Buffer 2 fill color: #f2fbff
+Buffer 3 fill color: #f7fcff
+
+Then exported as PDF from QGIS and copied output PDF data to a new Adobe Illustrator file
+
+For the stateless nation extents in Illustrator I added an inner glow with parameters:
+Mode:Normal
+color: FFF3F3
+opacity: 75%
+Blur: between 5-15 px, depending on size (larger polygons had larger blurs and vice versa)
+Center
+
+Then added text where needed. Behind title I also added rectangle with fill color: F5F5F7
+and 70% opacity to give faded appearance behind title to make it easier to read

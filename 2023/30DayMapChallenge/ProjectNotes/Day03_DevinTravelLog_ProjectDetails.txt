@@ -1,0 +1,134 @@
+###########################################################
+###########################################################
+
+Devin's Travel Log Map (US Counties) 2023 Update
+Author: Devin Lea
+
+Date project started: 10/20/2023
+Last updated: 10/31/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Microsoft Excel
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my polygon map for #30DayMapChallenge
+
+I figured this was an easy and fun way to visualize all the places
+I have traveled in the United States. I did this same map last year
+for 2022 challenge so this was an update.
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+There were four data sources I acquired, initally layered in QGIS in following order:
+
+1) US Counties List and my interaction with them (.csv I created)
+2) US Census Bureau 5m counties Cartographic Boundary shapefile (shapefile)
+3) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+4) US Census Bureau 5m nation Cartographic Boundary shapefile (shapefile)
+
+
+1) US Counties List and my interaction with them (.csv I created)
+
+I first acquired a list of all United States counties and equivalents and their fips codes.
+To do this, I went to: https://en.wikipedia.org/wiki/List_of_United_States_FIPS_codes_by_county
+and copied the table into a new Microsoft Excel document and saved it as a .csv file.
+I edited the file to remove the state column, so at first there was only the FIPS column and
+County name column. I then added third column I just called "Rank" which I assigned a 0, 1, 2,
+or 3.
+0 = Never been there
+1 = Traveled through
+2 = Stayed a night or more
+3 = Lived There
+
+
+2) US Census Bureau 5m Counties Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+3) US Census Bureau 5m States Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+4) US Census Bureau 5m Nation Cartographic Boundary Shapefile
+
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading files into GIS, I performed following steps.
+
+I joined the .csv to the counties layer based on FIPS codes. To do this, I first
+added a column to the counties layer that was an intiger instead of text and set
+this equal to FIPS column so that I could then join this new column (which I called
+FIPS2) to the FIPS column from the .csv
+
+For counties, I changed symbology to sort based on categories of the Rank column.
+For each rank value I used following fill colors.
+0- R:230, G:230, B:235
+1- R:205, G:205, B:215
+2- R:145, G:145, B:155
+3- R:30, G:30, B:35
+For all ranks I set stroke color as R:255, G:255, B:255 and width 0.03 mm
+
+For states and national layers I made the fill transparent (0% opacity) and set a
+0.1mm white stroke for states and 0.2mm white stroke for national boundary to lightly show outlines.
+
+I then exported the map layers as a PDF using Project > Import/Export > Export Map to PDF
+PDF export parameters:
+For contiguous US:
+North_America_Lambert_Conformal_Conic
+1:20,000,000
+
+
+I then brought PDF into new Adobe Illustrator file and copied them to a new art board
+with 2200 x 1600 pixels dimensions.
+
+
+Adjusted size of contiguous US layer so that scaled them to the art board.
+
+Added text and rectangles with matching color fill to create a simple key. Font was Segoe Print

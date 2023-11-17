@@ -1,0 +1,113 @@
+###########################################################
+###########################################################
+
+Picket Lines for Major 2023 strikes in United States of America
+Author: Devin Lea
+
+Date project started: 10/15/2023
+Last updated: 11/17/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- Libre Office
+- QGIS
+- Adobe Illustrator
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my Points map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The data sources I acquired, initally layered in QGIS in following order:
+
+1) Major Picket Line locations (.csv I created)
+3) US Census Bureau 5m nation Cartographic Boundary shapefile (shapefile)
+2) US Census Bureau 5m states Cartographic Boundary shapefile (shapefile)
+
+
+1) Major Picket Line locations (.csv I created)
+To acquire the data on 2023 labor strikes (up until end of October) and create my
+.csv of picket line locations, I used the Cornell Labor Action Tracker website:
+https://striketracker.ilr.cornell.edu/
+After looking through the available data, I decided I would limit myself to "major"
+strikes (in this case, strikes with 2000+ participants, which was the largest bracket
+I could sort by based on number of participants via the labor tracker website) and
+only the major picket line locations, since those were provided by the labor tracker
+but not necessarily every location where workers on any given strike were on strike.
+So to acquire my data I set the date parameters between 1/1/23 and 10/25/23 (latter
+being day I created the final version of the map) and set number of participants to
+2000+. I then went through all the data provided and in a .csv file in Libre Office
+for each individual strike I determined the listed picket line locations and then
+determined the latitude and longitude for those locations using Google geocoding API:
+https://developers.google.com/maps/documentation/geocoding/overview
+Once this .csv was complete I had latitude and longitude locations I could add in
+as a layer in QGIS.
+
+2) US Census Bureau 5m Nation Cartographic Boundary Shapefile
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+3) US Census Bureau 5m States Cartographic Boundary Shapefile
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading the three data layers into QGIS, I performed following steps.
+
+Set projection to ESRI:102009 (North_America_Lambert_Conformal_Conic)
+Scale 1:20,000,000
+
+Symbology:
+Points: Size 2.0mm, fill: #e5b636, stroke: #555555, stroke width: 0.1mm
+Nation: fill: transparent, stroke: #ffffff, stroke width: 0.1mm
+States: fill: #f2f2f5, stroke: #878787, stroke width: 0.16mm
+
+Exported as PDF from QGIS, copied data to new .ai file in Adobe Illustrator
+
+In Illustrator I changed the fill for all states that had one or more strike locations
+to color: #F2F2F5
+
+I then moved any points slightly in areas that had several points (New York, Los Angeles)
+to better see the points individually
+
+Then added text. Text for naming strike name and dates were Open Sans, 7pt, color: #323232
+Text for naming cities/metro areas was Open Sans, 5.5pt, color: #6E6E64
+
+Added callouts and other text where appropriate

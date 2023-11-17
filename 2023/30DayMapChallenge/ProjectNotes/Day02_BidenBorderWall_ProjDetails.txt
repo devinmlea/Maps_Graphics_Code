@@ -1,0 +1,142 @@
+###########################################################
+###########################################################
+
+Biden Admin Texas Border Wall Map
+Author: Devin Lea
+
+Date project started: 10/27/2022
+Last updated: 10/31/2022
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my lines map for #30DayMapChallenge
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The data sources I acquired, initally layered in QGIS in following order:
+
+1) Proposed New Border Walls (.shp I digitized from another source)
+2) Existing Border Wall Segments (.gdb file)
+3) Texas Major Rivers (.shp file)
+4) Texas Reservoirs (.shp file)
+5) Texas places (.shp file)
+6) Mexico cities (.shp I digitized from another source)
+7) Rio Grande Wildlife Areas (.gdb file)
+8) 1 to 5 mil US counties (.shp file)
+9) 1 to 10 mil land (.shp)
+10) 1 to 10 mil ocean (.shp)
+
+1) Proposed New Border Walls (.shp I digitized from another source)
+I created a new layer in QGIS and digitized walls layer matching map shown on a social
+media post by New York Times on October 6, 2023:
+https://twitter.com/nytimes/status/1710371857839370467
+
+2) Existing Border Wall Segments (.gdb file)
+.gdb data acquired from here:
+https://data.world/inewsource/us-mexico-border-fencing-shapefiles
+
+3) Texas Major Rivers (.shp file)
+Acquired here: https://www.twdb.texas.gov/mapping/gisdata.asp
+
+4) Texas Reservoirs (.shp file)
+Acquired here: https://www.twdb.texas.gov/mapping/gisdata.asp
+
+5) Texas places
+Acquired from US Census Bureau: https://www.census.gov/cgi-bin/geo/shapefiles/index.php
+Layer Type: Places
+State: Texas
+
+6) Mexico cities:
+I created a new layer in QGIS and digitized city boundaries by using Google Maps and
+tracing estimated extents in QGIS
+
+7) Land and Water Resources Conservation and Recreation Plan Statewide 2012 (.gdb file)
+https://tpwd.maps.arcgis.com/home/item.html?id=ec4e6d378ba14779b5d569c27f1236de
+
+8) US Census Bureau 5m Counties Cartographic Boundary Shapefile
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+9) Natural Earth Data 1:10m land
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Download Land
+
+10) Natural Earth Data 1:10m ocean
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+Download Ocean
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading files into GIS and digitizing layers I needed, I performed following steps.
+
+Rotate to -40 from north setting, scale 1:600000
+
+From the Land and Water Resources Conservation and Recreation Plan (LWRCRP) Statewide 2012,
+I selected all state and federally managed lands in near the lower Rio Grande region and saved
+them the selection into a new layer I named Selected_RioGrande_WildlifeAreas
+
+Color for layers (layers top to bottom):
+Proposed Border Wall: width 1.00mm, color: #ff0029
+Existing Border Wall: width 1.00mm, color: #000000
+Texas Counties1: fill color: transparent, stroke color: #b3b3b3, stroke width: 0.1mm, dash line
+Rivers: width 1.00mm, color: #c5ddf4
+Reservoirs: fill color: #c5ddf4, stroke color: #b4d6df, stroke width: 0.2mm
+Texas Places: fill color: #fafafa, no stroke
+Mexico Cities: fill color: #fafafa, no stroke
+Selected_RioGrande_WildlifeAreas: fill color: #adbfb7
+Texas Counties2: fill color: #f1f1f5
+Land: fill color: #e8e8ec
+Ocean: fill color: #c5ddf4
+
+I then exported the map from QGIS as a .PDF and copied the data from the .PDF to a new .ai
+file in Adobe Illustrator
+
+In Adobe Illustrator I added text and labels. The longer text describing the situation was
+informed by the following articles:
+https://truthout.org/articles/biden-administration-waives-26-laws-to-speed-construction-on-trumps-border-wall/
+https://www.nytimes.com/2023/10/11/us/border-wall-biden-texas-starr-county.html
+
+Font used was Open Sans
+
+To create the inset map I used 1:5m states cartographic boundary file in QGIS and selected Texas and saved
+it as its own layer. Then set it as color #8c8c91 and exported as PDF and copied into map in Illustrator.

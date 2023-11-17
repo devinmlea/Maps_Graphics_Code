@@ -1,0 +1,120 @@
+###########################################################
+###########################################################
+
+Billionares are Bad for Global Cliamte Change
+Author: Devin Lea
+
+Date project started: 11/01/2023
+Last updated: 11/03/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+- LibreOffice
+
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my bad map for #30DayMapChallenge
+
+I used this article and the chart within it and created it into a map:
+https://theconversation.com/private-planes-mansions-and-superyachts-what-gives-billionaires-like-musk-and-abramovich-such-a-massive-carbon-footprint-152514
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+Below are the sources I acquired:
+
+1) 1 to 50 mil land (.shp)
+2) 1 to 50 mil ocean (.shp)
+3) Billionare pictures (image files)
+4) Billionare emissions (.csv file)
+
+
+1) Natural Earth Data 1:50m land
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+Download Land
+
+2) Natural Earth Data 1:50m ocean
+https://www.naturalearthdata.com/downloads/50m-physical-vectors/
+Download Ocean
+
+3) Billionare pictures (image files)
+Below are the links where I acquired each image:
+https://dreamworks.fandom.com/wiki/David_Geffen
+https://commons.wikimedia.org/wiki/File:Bernard_Arnault_(3)_-_2017_(cropped).jpg
+https://www.forbes.com/profile/ann-walton-kroenke/?sh=60cad2de3785
+https://commons.wikimedia.org/wiki/File:Roman_Abramovich_2_(cropped).png
+https://commons.wikimedia.org/wiki/File:%D0%AD%D1%80%D0%BD%D0%B5%D1%81%D1%82%D0%BE_%D0%91%D0%B5%D1%80%D1%82%D0%B0%D1%80%D0%B5%D0%BB%D0%BB%D0%B8.jpg
+https://commons.wikimedia.org/wiki/File:Larry_Ellison_2013_(9887589546).jpg
+https://commons.wikimedia.org/wiki/File:Ron_Perelman_2012_Shankbone.JPG
+https://commons.wikimedia.org/wiki/File:TechCrunch_Disrupt_SF_2017_-_Day_3.jpg - Jobs
+https://commons.wikimedia.org/wiki/File:Bill_Gates_2018.jpg
+https://en.wikipedia.org/wiki/Michael_Dell#/media/File:Michael_Dell_2010.jpg
+https://www.forbes.com/profile/sergey-brin/?sh=6658e27c4b43
+https://en.wikipedia.org/wiki/Larry_Page#/media/File:Larry_Page_in_the_European_Parliament,_17.06.2009_(cropped).jpg
+https://commons.wikimedia.org/wiki/File:Tilman-Fertitta-Net-Worth.jpg
+https://commons.wikimedia.org/wiki/File:GiorgioArmani.jpg
+https://commons.wikimedia.org/wiki/File:Eric_Schmidt_MSC_2018_(cropped).jpg
+https://commons.wikimedia.org/wiki/File:Carlos_Slim_(45680472234)_(cropped).jpg
+https://en.wikipedia.org/wiki/Jeff_Bezos#/media/File:Jeff_Bezos_visits_LAAFB_SMC_(3908618)_(cropped).jpeg
+https://en.wikipedia.org/wiki/Elon_Musk#/media/File:Elon_Musk_Colorado_2022_(cropped2).jpg
+https://en.wikipedia.org/wiki/Michael_Bloomberg#/media/File:Mike_Bloomberg_Headshot.jpg
+
+4) Billionare emissions (.csv file)
+Either copied or did my best to estimate values from the chart here:
+https://theconversation.com/private-planes-mansions-and-superyachts-what-gives-billionaires-like-musk-and-abramovich-such-a-massive-carbon-footprint-152514
+I put these in a .csv file in LibreOffice and used the emissions to create donut charts I put around each corresponding billionare's image
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading the land and ocean shapefiles into GIS, I performed following steps.
+
+Set fill color, no stroke
+#1a1a1a - land
+#4d4d4d - ocean
+
+Before export of North America, set projection to North_America_Lambert_Conformal_Conic (102009)
+Before export of Europe, set projection to Europe_Lambert_Conformal_Conic (102014)
+
+Exports to .pdf, opened PDFs in Adobe Illustrator and cropped images at same scale and dimensions,
+then copied each map to new .ai file. I set dimensions so I would have 1.25 ratio for portrait layout.
+
+Then I imported images and sized them proportionate to the corresponding billionare emissions.
+I also copied the donut charts and sized them 20 pts bigger than the circles of the billionare images,
+which were created using clipping masks.
+Colors were from Figure 2 high-contrast qualitative color scheme here: https://personal.sron.nl/~pault/
+Font were Frutiger Ultra Black and Open Sans
+
