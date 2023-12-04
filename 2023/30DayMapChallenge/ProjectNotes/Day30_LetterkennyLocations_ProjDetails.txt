@@ -1,0 +1,124 @@
+###########################################################
+###########################################################
+
+Letterkenny Map
+Author: Devin Lea
+
+Date project started: 11/25/2023
+Last updated: 12/4/2023
+
+Licensing: This map is licensed by the author (Devin Lea)
+under Creative Commons Attribution-Noncommercial-ShareAlike 3.0
+(CC BY-NC-SA 3.0). What this means is you can take this map and
+reshare it or reproduce/remix it for noncommercial purposes,
+but please attribute me if you do so, and contact me if you wish
+to use the map for commercial purposes.
+
+This document is broken into the following sections:
+- Project Goal
+- Project Replication
+- Data Acquisition + Prep
+- Data Modification and Visualization
+
+Software used for this project:
+- QGIS
+- Adobe Illustrator
+- Adobe Photoshop
+
+###########################################################
+Project Goal
+###########################################################
+
+One goal is to use this for my "My Favorite" map for #30DayMapChallenge 2023
+
+
+###########################################################
+Project Replication
+###########################################################
+
+If you would like to replicate this project and do something similar for yourself,
+I have detailed the software I used and actions I performed in the sections below
+that you can follow to re-create my product for your own travels.
+
+
+###########################################################
+Data Acquisition + Prep
+###########################################################
+
+This section describes the data acquired to create the map and any alterations
+I made to the data. For information about displaying the map, see the Data
+Visualization section.
+
+The data sources I acquired:
+
+1) Canada 2016 Provinces/Territories, Cartographic Boundary File (.shp)
+2) US Census Bureau 5m Counties Cartographic Boundary Shapefile (.shp)
+3) 1:10m ocean Natural Earth Data (.shp)
+4) 1:10m lakes Natural Earth Data (.shp)
+5) Wood texture background image (.jpg)
+6) Letterkenny Logo 
+
+
+1) Canada 2016 Provinces/Territories, Cartographic Boundary File (.shp)
+Acquired from here: https://open.canada.ca/data/en/dataset/a883eb14-0c0e-45c4-b8c4-b54c4a819edb/resource/12c03de6-c3f7-4f5f-bb5c-d479f2332842
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+2) US Census Bureau 5m Counties Cartographic Boundary Shapefile (.shp)
+Downloaded Cartographic Boundary Shapefile from link:
+https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html
+After downloading and unzipping the file, I opened the unzipped file in QGIS
+
+3) 1:10m ocean Natural Earth Data (.shp)
+Downloaded from link:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+4) 4) 1:10m lakes Natural Earth Data (.shp)
+Downloaded from link:
+https://www.naturalearthdata.com/downloads/10m-physical-vectors/
+
+5) Wood texture background image
+Downloaded image from pixabay
+https://pixabay.com/photos/wooden-floor-backdrop-background-1853417/
+Author: Pexels
+
+6) Letterkenny Logo
+https://cdn.shopify.com/s/files/1/0061/9816/5573/files/logo.gif?height=628&pad_color=ffffff&v=1613515422&width=1200
+
+
+###########################################################
+Data Visualization
+###########################################################
+
+After loading shapefiles into GIS, I performed following steps.
+
+I selected the Great Lakes from the 1:10m lakes file and saved the selection
+to a new file and displayed only the selected lakes.
+
+Set projection to EPSG: 3161 (NAD83 / Ontario MNR Lambert)
+
+Symbology
+Ocean: fill: #5f371b, no stroke
+Lakes: fill: #5f371b, no stroke
+US States: fill: transparent, stroke: #472208, 85% opacity, stroke width 0.2mm
+Provinces: fill: transparent, stroke: #472208, 85% opacity, stroke width 0.5mm
+
+Export map as .PDF
+
+For the Wood texture background image, I opened Adobe Photoshop and made modifications
+listed below to the image and then saved new image
+Increased brightness +75, reduced contrast -20
+Applied Photo Filter: #513611
+
+I then opened Adobe Illustrator and copied the map data from the .pdf and the modified
+wood texture image to a new .ai file.
+
+Changed lake fill to 80% opacity
+
+I edited along lake/land shorelines so that lake layer and states and provinces better
+aligned
+
+Added Letterkenny logo (cropped) in appropriate places and then text where needed
+Font was Futura Extra Bold, downloaded from here:
+https://fontsgeek.com/fonts/Futura-Extra-Bold#google_vignette
+Show info was informed by Letterkenny Wiki:
+https://letterkenny.fandom.com/wiki/Letterkenny_(location)
