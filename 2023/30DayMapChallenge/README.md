@@ -1,4 +1,4 @@
-# Below are maps I created for the 2023 #30DayMapChallenge in November
+# Below are maps I created for the 2023 #30DayMapChallenge
 
 This year I just completed several maps when I had the time and an idea I wanted to pursue.
 
