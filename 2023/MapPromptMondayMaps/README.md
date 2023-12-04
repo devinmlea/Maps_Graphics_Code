@@ -110,3 +110,7 @@ No new map, [reposed Michigan COVID map I created last year](https://github.com/
 
 ![SnowPlaceNamesUSA](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/9ce197ae-5ecb-4e2a-9588-b2be45f9c079)
 
+## Week 39: Sports
+
+![W_Marathon_WR_Places_Map](https://github.com/devinmlea/Maps_Graphics_Code/assets/119870562/817eef83-a6ea-438f-a67d-3484b0e56633)
+
